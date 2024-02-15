@@ -89,6 +89,16 @@ const ObjectField = ({strict= true, ...args}) => {
   return fieldSet;
 }
 
+function BooleanField({ field, ...args }) {
+  const col = Field({ field, ...args });
+  col
+    .isBoolean()
+    .withMessage(`${field} harus berupa nilai true atau false`)
+    .bail();
+
+  return col;
+}
+
 const EmailField = ({host_blacklist=[], host_whitelist=[], allow_ip_domain=true, ...args}) => {
   const fieldset = Field(args);
   fieldset.isEmail({
@@ -130,5 +140,6 @@ module.exports = {
     ObjectField,
     EmailField,
     DateField,
+    BooleanField
   },
 };
