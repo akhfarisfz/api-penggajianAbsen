@@ -41,12 +41,27 @@ const KaryawanMiddlewareCreate = LibValidationsMiddleware(
    *  }),
    *  ...
    */
-
+  LibValidationFields.CharField({ field: "nik" }),
+  LibValidationFields.CharField({ field: "nama" }),
+  LibValidationFields.NumberField({ field: "gajiPokok" }),
+  LibValidationFields.CharField({ field: "golongan.nama" }),
+  LibValidationFields.CharField({ field: "jabatan.nama" }),
+  LibValidationFields.NumberField({ field: "tunjangan.tunjanganGolongan" }),
+  LibValidationFields.NumberField({ field: "tunjangan.tunjanganJabatan", }),
+  LibValidationFields.NumberField({ field: "tunjangan.tunjanganKeluarga", }),
   LibValidationExceptionMiddleware,
 );
 
 const KaryawanMiddlewareUpdate = LibValidationsMiddleware(
   LibAuthenticationMiddleware,
+  LibValidationFields.CharField({ field: "nik" }),
+  LibValidationFields.CharField({ field: "nama" }),
+  LibValidationFields.NumberField({ field: "gajiPokok" }),
+  LibValidationFields.CharField({ field: "golongan.nama" }),
+  LibValidationFields.CharField({ field: "jabatan.nama" }),
+  LibValidationFields.NumberField({ field: "tunjangan.tunjanganGolongan" }),
+  LibValidationFields.NumberField({ field: "tunjangan.tunjanganJabatan", }),
+  LibValidationFields.NumberField({ field: "tunjangan.tunjanganKeluarga", }),
   /** Your middleware here (validations, sanitizing, etc..) */
   LibValidationExceptionMiddleware,
 );

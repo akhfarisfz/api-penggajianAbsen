@@ -10,8 +10,9 @@ function KaryawanFilter(req) {
          * You can change field1 and field2 according to your needs.
          **/
 
-        { field1: { $regex: ".*" + search + ".*", $options: "i" } },
-        { field2: { $regex: ".*" + search + ".*", $options: "i" } },
+        { nik: { $regex: ".*" + search + ".*", $options: "i" } },
+        { nama: { $regex: ".*" + search + ".*", $options: "i" } },
+        { jabatan: { $regex: ".*" + search + ".*", $options: "i" } },
       ],
     };
   }
