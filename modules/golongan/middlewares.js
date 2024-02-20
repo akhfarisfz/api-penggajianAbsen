@@ -11,15 +11,15 @@ const {
  * you can remove 'LibAuthenticationMiddleware' from your middleware list.
  */
 
-const DepartemenMiddlewareList = LibValidationsMiddleware(
+const GolonganMiddlewareList = LibValidationsMiddleware(
   LibAuthenticationMiddleware
 );
 
-const DepartemenMiddlewareDetail = LibValidationsMiddleware(
+const GolonganMiddlewareDetail = LibValidationsMiddleware(
   LibAuthenticationMiddleware
 );
 
-const DepartemenMiddlewareCreate = LibValidationsMiddleware(
+const GolonganMiddlewareCreate = LibValidationsMiddleware(
   LibAuthenticationMiddleware,
   /** Your middleware here (validations, sanitizing, etc..) */
 
@@ -33,33 +33,35 @@ const DepartemenMiddlewareCreate = LibValidationsMiddleware(
    *  LibValidationFields.CharField({ field: "field2" }),
    *  LibValidationFields.CharField({
    *    field: "field3",
-   *    customs: [DepartemenValidatorField3Unique],
+   *    customs: [GolonganValidatorField3Unique],
    *  }),
    *  LibValidationFields.CharField({
    *    field: "field4",
-   *    sanitizers: [DepartemenSanitizerField4ToHash],
+   *    sanitizers: [GolonganSanitizerField4ToHash],
    *  }),
    *  ...
    */
+  LibValidationFields.CharField({ field: "namaGolongan" }),
+  LibValidationFields.NumberField({ field: "tunjangan" }),
 
   LibValidationExceptionMiddleware,
 );
 
-const DepartemenMiddlewareUpdate = LibValidationsMiddleware(
+const GolonganMiddlewareUpdate = LibValidationsMiddleware(
   LibAuthenticationMiddleware,
   /** Your middleware here (validations, sanitizing, etc..) */
   LibValidationExceptionMiddleware,
 );
 
-const DepartemenMiddlewareDelete = LibValidationsMiddleware(
+const GolonganMiddlewareDelete = LibValidationsMiddleware(
   LibAuthenticationMiddleware
 );
 
 module.exports = {
-  DepartemenMiddlewareCreate,
-  DepartemenMiddlewareUpdate,
-  DepartemenMiddlewareDetail,
-  DepartemenMiddlewareList,
-  DepartemenMiddlewareDelete,
+  GolonganMiddlewareCreate,
+  GolonganMiddlewareUpdate,
+  GolonganMiddlewareDetail,
+  GolonganMiddlewareList,
+  GolonganMiddlewareDelete,
 };
   

@@ -11,15 +11,15 @@ const {
  * you can remove 'LibAuthenticationMiddleware' from your middleware list.
  */
 
-const DepartemenMiddlewareList = LibValidationsMiddleware(
+const AsuransiMiddlewareList = LibValidationsMiddleware(
   LibAuthenticationMiddleware
 );
 
-const DepartemenMiddlewareDetail = LibValidationsMiddleware(
+const AsuransiMiddlewareDetail = LibValidationsMiddleware(
   LibAuthenticationMiddleware
 );
 
-const DepartemenMiddlewareCreate = LibValidationsMiddleware(
+const AsuransiMiddlewareCreate = LibValidationsMiddleware(
   LibAuthenticationMiddleware,
   /** Your middleware here (validations, sanitizing, etc..) */
 
@@ -33,33 +33,40 @@ const DepartemenMiddlewareCreate = LibValidationsMiddleware(
    *  LibValidationFields.CharField({ field: "field2" }),
    *  LibValidationFields.CharField({
    *    field: "field3",
-   *    customs: [DepartemenValidatorField3Unique],
+   *    customs: [AsuransiValidatorField3Unique],
    *  }),
    *  LibValidationFields.CharField({
    *    field: "field4",
-   *    sanitizers: [DepartemenSanitizerField4ToHash],
+   *    sanitizers: [AsuransiSanitizerField4ToHash],
    *  }),
    *  ...
    */
+  LibValidationFields.CharField({ field: "namaAsuransi" }),
+  LibValidationFields.CharField({ field: "kelas" }),
+  LibValidationFields.NumberField({ field: "potongan" }),
 
   LibValidationExceptionMiddleware,
 );
 
-const DepartemenMiddlewareUpdate = LibValidationsMiddleware(
+const AsuransiMiddlewareUpdate = LibValidationsMiddleware(
   LibAuthenticationMiddleware,
   /** Your middleware here (validations, sanitizing, etc..) */
+  
+  LibValidationFields.CharField({ field: "namaAsuransi" }),
+  LibValidationFields.CharField({ field: "kelas" }),
+  LibValidationFields.NumberField({ field: "potongan" }),
   LibValidationExceptionMiddleware,
 );
 
-const DepartemenMiddlewareDelete = LibValidationsMiddleware(
+const AsuransiMiddlewareDelete = LibValidationsMiddleware(
   LibAuthenticationMiddleware
 );
 
 module.exports = {
-  DepartemenMiddlewareCreate,
-  DepartemenMiddlewareUpdate,
-  DepartemenMiddlewareDetail,
-  DepartemenMiddlewareList,
-  DepartemenMiddlewareDelete,
+  AsuransiMiddlewareCreate,
+  AsuransiMiddlewareUpdate,
+  AsuransiMiddlewareDetail,
+  AsuransiMiddlewareList,
+  AsuransiMiddlewareDelete,
 };
   

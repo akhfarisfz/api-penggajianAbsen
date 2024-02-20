@@ -1,6 +1,7 @@
 
 const { LibPaginationResponse } = require("../../libs/paginations");
 const { LibHTTPResponseException } = require("../../libs/https");
+const { Absensi } = require("./models");
 
 const AbsensiControllerList =  async (req, res) => {
   try {
@@ -11,10 +12,8 @@ const AbsensiControllerList =  async (req, res) => {
     // return LibPaginationResponse(req, res, results);
 
 
-    res.status(201).json({
-      controller: "AbsensiControllerList",
-      query: req.query
-    });
+    const results = Absensi.find(AbsensiControllerCreate(req));
+    return LibPaginationResponse(req, res, results);
   } catch (error) {
     return LibHTTPResponseException(res, error);
   }
@@ -22,11 +21,8 @@ const AbsensiControllerList =  async (req, res) => {
 
 const AbsensiControllerCreate = async (req, res) => {
   try {
-    // Your code here
-    res.status(201).json({
-      controller: "AbsensiControllerCreate",
-      body: req.body
-    });
+    await Absensi.create(req.cleanedData);
+    res.status(201).json(req.cleanedData);
   } catch (error) {
     return LibHTTPResponseException(res, error);
   }
@@ -35,10 +31,9 @@ const AbsensiControllerCreate = async (req, res) => {
 const AbsensiControllerDetail = async (req, res) => {
   try {
     // Your code here
-    res.status(200).json({
-      controller: "AbsensiControllerDetail",
-      params: req.params
-    });
+    let absensi = await Absensi.findOne({ _id: req.params.id });
+    if (!absensi) throw { status: 404, message: "Not found" };
+    res.status(200).json(absensi);
   } catch (error) {
     return LibHTTPResponseException(res, error);
   }
@@ -47,11 +42,10 @@ const AbsensiControllerDetail = async (req, res) => {
 const AbsensiControllerUpdate = async (req, res) => {
   try {
     // Your code here
-    res.status(200).json({
-      controller: "AbsensiControllerUpdate",
-      params: req.params,
-      body: req.body
-    });
+    let absensi = await Absensi.findOne({ _id: req.params.id });
+    if (!absensi) throw { status: 404, message: "Not found" };
+    await Absensi.findByIdAndUpdate(req.params.id, req.cleanedData);
+    res.status(200).json(req.cleanedData);
   } catch (error) {
     return LibHTTPResponseException(res, error);
   }
@@ -60,10 +54,9 @@ const AbsensiControllerUpdate = async (req, res) => {
 const AbsensiControllerDelete = async (req, res) => {
   try {
     // Your code here
-    res.status(204).json({
-      controller: "AbsensiControllerDelete",
-      params: req.params
-    });
+    let absensi = await Absensi.findOne({ _id: req.params.id });
+    if (!absensi) throw { status: 404, message: "Not found" };
+    await Karyawan.findByIdAndDelete(req.params.id);
   } catch (error) {
     return LibHTTPResponseException(res, error);
   }

@@ -1,5 +1,5 @@
 
-function KaryawanFilter(req) {
+function AsuransiFilter(req) {
   let qSearch = {};
   const { search, limit, page, ...filters } = req.query;
 
@@ -10,8 +10,8 @@ function KaryawanFilter(req) {
          * You can change field1 and field2 according to your needs.
          **/
 
-        { nik: { $regex: ".*" + search + ".*", $options: "i" } },
-        { nama: { $regex: ".*" + search + ".*", $options: "i" } },
+        { field1: { $regex: ".*" + search + ".*", $options: "i" } },
+        { field2: { $regex: ".*" + search + ".*", $options: "i" } },
       ],
     };
   }
@@ -20,6 +20,6 @@ function KaryawanFilter(req) {
 }
 
 module.exports = {
-  KaryawanFilter,
+  AsuransiFilter,
 };
   

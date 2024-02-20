@@ -3,9 +3,8 @@ const mongoose = require("mongoose");
 
 const DepartemenSchema = new mongoose.Schema(
   {
-    namaDepartemen: { type: String, require: true},
-    tunjanganDepartemen: { type: Number, default: 0 },
-    created: { type: Date, default: Date.now },
+    namaDepartemen: { type: String},
+    tunjangan_departemen: { type: Number,default:0 }
   },
   { versionKey: false }
 );

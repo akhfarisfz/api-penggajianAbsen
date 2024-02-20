@@ -1,14 +1,20 @@
 
 const { LibPaginationResponse } = require("../../libs/paginations");
 const { LibHTTPResponseException } = require("../../libs/https");
-const { Departemen } = require("./models");
-const { DepartemenFilter } = require("./filters");
 
 const DepartemenControllerList =  async (req, res) => {
   try {
     // Your code here
-    const results = Departemen.find(DepartemenFilter(req));
-    return LibPaginationResponse(req, res, results);
+
+    // example:
+    // const results = YourModel.find(YourFilter(req));
+    // return LibPaginationResponse(req, res, results);
+
+
+    res.status(201).json({
+      controller: "DepartemenControllerList",
+      query: req.query
+    });
   } catch (error) {
     return LibHTTPResponseException(res, error);
   }
@@ -50,10 +56,10 @@ const DepartemenControllerUpdate = async (req, res) => {
 const DepartemenControllerDelete = async (req, res) => {
   try {
     // Your code here
-    let departemen = await Departemen.findOne({ _id: req.params.id });
-    if (!departemen) throw { status: 404, message: "Not found" };
-    await Departemen.findByIdAndDelete(req.params.id);
-    res.status(204).json(null);
+    res.status(204).json({
+      controller: "DepartemenControllerDelete",
+      params: req.params
+    });
   } catch (error) {
     return LibHTTPResponseException(res, error);
   }

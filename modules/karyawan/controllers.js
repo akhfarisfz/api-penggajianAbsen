@@ -38,8 +38,8 @@ const KaryawanControllerDetail = async (req, res) => {
 const KaryawanControllerUpdate = async (req, res) => {
   try {
     // Your code here
-    let karyawan = await Karyawan.findOne({ _id: req.params.id });
-    if (!karyawan) throw { status: 404, message: "Not found" };
+    // let karyawan = await Karyawan.findOne({ _id: req.params.id });
+    // if (!karyawan) throw { status: 404, message: "Not found" };
 
     await Karyawan.findByIdAndUpdate(req.params.id, req.cleanedData);
     res.status(200).json(req.cleanedData);
