@@ -1,32 +1,22 @@
 
 const { LibPaginationResponse } = require("../../libs/paginations");
 const { LibHTTPResponseException } = require("../../libs/https");
+const { Penggajian } = require("./models");
 
 const PenggajianControllerList =  async (req, res) => {
   try {
-    // Your code here
-
-    // example:
-    // const results = YourModel.find(YourFilter(req));
-    // return LibPaginationResponse(req, res, results);
-
-
-    res.status(201).json({
-      controller: "PenggajianControllerList",
-      query: req.query
-    });
+    const results = Penggajian.find(PenggajianFilter(req));
+    return LibPaginationResponse(req, res, results);
   } catch (error) {
     return LibHTTPResponseException(res, error);
-  }
+}
 }
 
 const PenggajianControllerCreate = async (req, res) => {
   try {
     // Your code here
-    res.status(201).json({
-      controller: "PenggajianControllerCreate",
-      body: req.body
-    });
+    await Penggajian.create(req.cleanedData);
+    res.status(201).json(req.cleanedData);
   } catch (error) {
     return LibHTTPResponseException(res, error);
   }
@@ -34,11 +24,9 @@ const PenggajianControllerCreate = async (req, res) => {
 
 const PenggajianControllerDetail = async (req, res) => {
   try {
-    // Your code here
-    res.status(200).json({
-      controller: "PenggajianControllerDetail",
-      params: req.params
-    });
+    let penggajian = await Penggajian.findOne({ _id: req.params.id });
+    if (!penggajian) throw { status: 404, message: "Not found" };
+    res.status(200).json(penggajian);
   } catch (error) {
     return LibHTTPResponseException(res, error);
   }

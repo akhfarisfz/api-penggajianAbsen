@@ -20,8 +20,8 @@ const PenggajianRouter = LibHTTPRouter();
 PenggajianRouter.get("", PenggajianMiddlewareList, PenggajianControllerList);
 PenggajianRouter.post("", PenggajianMiddlewareCreate, PenggajianControllerCreate);
 PenggajianRouter.get("/:id", PenggajianMiddlewareDetail, PenggajianControllerDetail);
-PenggajianRouter.put("/:id", PenggajianMiddlewareUpdate, PenggajianControllerUpdate);
-PenggajianRouter.delete("/:id", PenggajianMiddlewareDelete, PenggajianControllerDelete);
+// PenggajianRouter.put("/:id", PenggajianMiddlewareUpdate, PenggajianControllerUpdate);
+// PenggajianRouter.delete("/:id", PenggajianMiddlewareDelete, PenggajianControllerDelete);
 
 /**
  * You need to register your application in the index.js file 

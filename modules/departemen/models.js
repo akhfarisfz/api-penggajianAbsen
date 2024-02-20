@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const DepartemenSchema = new mongoose.Schema(
   {
     namaDepartemen: { type: String},
-    lokasi: { type: String }
+    tunjangan_departemen: { type: Number,default:0 }
   },
   { versionKey: false }
 );

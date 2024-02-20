@@ -10,7 +10,7 @@ function PenggajianFilter(req) {
          * You can change field1 and field2 according to your needs.
          **/
 
-        { field1: { $regex: ".*" + search + ".*", $options: "i" } },
+        { periodeGajiBulan: { $regex: ".*" + search + ".*", $options: "i" } },
         { field2: { $regex: ".*" + search + ".*", $options: "i" } },
       ],
     };
