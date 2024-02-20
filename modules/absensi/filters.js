@@ -10,8 +10,11 @@ function AbsensiFilter(req) {
          * You can change field1 and field2 according to your needs.
          **/
 
-        { field1: { $regex: ".*" + search + ".*", $options: "i" } },
-        { field2: { $regex: ".*" + search + ".*", $options: "i" } },
+        { Hadir: { $regex: ".*" + search + ".*", $options: "i" } },
+        { Izin: { $regex: ".*" + search + ".*", $options: "i" } },
+        { Sakit: { $regex: ".*" + search + ".*", $options: "i" } },
+        { Alpa: { $regex: ".*" + search + ".*", $options: "i" } },
+        { Terlambat: { $regex: ".*" + search + ".*", $options: "i" } },
       ],
     };
   }

@@ -54,6 +54,13 @@ const AbsensiMiddlewareCreate = LibValidationsMiddleware(
 
 const AbsensiMiddlewareUpdate = LibValidationsMiddleware(
   LibAuthenticationMiddleware,
+  LibValidationFields.NumberField({ field: "Hadir" }),
+  LibValidationFields.NumberField({ field: "Izin" }),
+  LibValidationFields.NumberField({ field: "Sakit" }),
+  LibValidationFields.NumberField({ field: "Alpa" }),
+  LibValidationFields.NumberField({ field: "Terlambat" }),
+  LibValidationFields.NumberField({ field: "nominalAlpa" }),
+  LibValidationFields.NumberField({ field: "nominalTerlambat" }),
   /** Your middleware here (validations, sanitizing, etc..) */
   LibValidationExceptionMiddleware,
 );

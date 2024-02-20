@@ -51,7 +51,6 @@ const AsuransiMiddlewareCreate = LibValidationsMiddleware(
 const AsuransiMiddlewareUpdate = LibValidationsMiddleware(
   LibAuthenticationMiddleware,
   /** Your middleware here (validations, sanitizing, etc..) */
-  
   LibValidationFields.CharField({ field: "namaAsuransi" }),
   LibValidationFields.CharField({ field: "kelas" }),
   LibValidationFields.NumberField({ field: "potongan" }),
