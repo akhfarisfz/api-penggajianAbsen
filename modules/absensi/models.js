@@ -3,12 +3,13 @@ const mongoose = require("mongoose");
 
 const AbsensiSchema = new mongoose.Schema(
   {
-    tanggal: { type: Date, default: Date.now },
-    jumlahHadir: { type: Number,default:0 },
-    jumlahIzin: { type: Number, default:0 },
-    jumlahSakit: { type: Number, default:0 },
-    jumlahAlpa: { type: Number, default:0 },
-    jumlahTerlambat: { type: Number, default:0 }
+    Hadir: { type: Number,default:0 },
+    Izin: { type: Number, default:0 },
+    Sakit: { type: Number, default:0 },
+    Alpa: { type: Number, default:0 },
+    Terlambat: { type: Number, default:0 },
+    Nominal_Alpa: { type: Number, default:0 },
+    Nominal_Terlambat: { type: Number, default:0 },
   },
   { versionKey: false }
 );
