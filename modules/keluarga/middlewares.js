@@ -41,12 +41,15 @@ const KeluargaMiddlewareCreate = LibValidationsMiddleware(
    *  }),
    *  ...
    */
-
+  LibValidationFields.NumberField({ field: "jumlahAnak" }),
+  LibValidationFields.NumberField({ field: "tunjanganKeluarga" }),
   LibValidationExceptionMiddleware,
 );
 
 const KeluargaMiddlewareUpdate = LibValidationsMiddleware(
   LibAuthenticationMiddleware,
+  LibValidationFields.NumberField({ field: "jumlahAnak" }),
+  LibValidationFields.NumberField({ field: "tunjanganKeluarga" }),
   /** Your middleware here (validations, sanitizing, etc..) */
   LibValidationExceptionMiddleware,
 );

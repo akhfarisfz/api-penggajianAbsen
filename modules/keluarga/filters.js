@@ -10,8 +10,8 @@ function KeluargaFilter(req) {
          * You can change field1 and field2 according to your needs.
          **/
 
-        { field1: { $regex: ".*" + search + ".*", $options: "i" } },
-        { field2: { $regex: ".*" + search + ".*", $options: "i" } },
+        { jumlahAnak: { $regex: ".*" + search + ".*", $options: "i" } },
+        { tunjanganKeluarga: { $regex: ".*" + search + ".*", $options: "i" } },
       ],
     };
   }
