@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 const PenggajianSchema = new mongoose.Schema(
   { 
-    periodeGaji:{type:Date},
+    periodeGajiBulan:{type:Number,default:1,min: 1,max: 12,},
     totalGaji:{type:Number,default:0},
     created: { type: Date, default: Date.now },
   },

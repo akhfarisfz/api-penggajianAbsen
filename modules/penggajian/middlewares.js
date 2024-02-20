@@ -41,11 +41,13 @@ const PenggajianMiddlewareCreate = LibValidationsMiddleware(
    *  }),
    *  ...
    */
-
+  LibValidationFields.NumberField({ field: "periodeGajiBulan" }),
+  LibValidationFields.NumberField({field:"totalGaji"}),
   LibValidationExceptionMiddleware,
 );
 
 const PenggajianMiddlewareUpdate = LibValidationsMiddleware(
+
   LibAuthenticationMiddleware,
   /** Your middleware here (validations, sanitizing, etc..) */
   LibValidationExceptionMiddleware,
