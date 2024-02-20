@@ -5,7 +5,7 @@ const PajakSchema = new mongoose.Schema(
   { 
     /** Your schema here */ 
     namaPajak: { type: String, require: true },
-    potongan: { type: Number },
+    potongan: { type: Number, default: 0 },
     created: { type: Date, default: Date.now },
   },
   { versionKey: false }

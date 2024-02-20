@@ -11,7 +11,6 @@ function PenggajianFilter(req) {
          **/
 
         { periodeGajiBulan: { $regex: ".*" + search + ".*", $options: "i" } },
-        { field2: { $regex: ".*" + search + ".*", $options: "i" } },
       ],
     };
   }
