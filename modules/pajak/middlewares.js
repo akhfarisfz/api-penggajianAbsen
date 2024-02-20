@@ -11,15 +11,15 @@ const {
  * you can remove 'LibAuthenticationMiddleware' from your middleware list.
  */
 
-const JabatanMiddlewareList = LibValidationsMiddleware(
+const PajakMiddlewareList = LibValidationsMiddleware(
   LibAuthenticationMiddleware
 );
 
-const JabatanMiddlewareDetail = LibValidationsMiddleware(
+const PajakMiddlewareDetail = LibValidationsMiddleware(
   LibAuthenticationMiddleware
 );
 
-const JabatanMiddlewareCreate = LibValidationsMiddleware(
+const PajakMiddlewareCreate = LibValidationsMiddleware(
   LibAuthenticationMiddleware,
   /** Your middleware here (validations, sanitizing, etc..) */
 
@@ -33,36 +33,36 @@ const JabatanMiddlewareCreate = LibValidationsMiddleware(
    *  LibValidationFields.CharField({ field: "field2" }),
    *  LibValidationFields.CharField({
    *    field: "field3",
-   *    customs: [JabatanValidatorField3Unique],
+   *    customs: [PajakValidatorField3Unique],
    *  }),
    *  LibValidationFields.CharField({
    *    field: "field4",
-   *    sanitizers: [JabatanSanitizerField4ToHash],
+   *    sanitizers: [PajakSanitizerField4ToHash],
    *  }),
    *  ...
    */
-  LibValidationFields.CharField({ field: "namaJabatan" }),
-  LibValidationFields.NumberField({ field: "tunjangan" }),
+  LibValidationFields.CharField({ field: "namaPajak" }),
+  // LibValidationFields.NumberField({ field: "potongan" }),
   LibValidationExceptionMiddleware,
 );
 
-const JabatanMiddlewareUpdate = LibValidationsMiddleware(
+const PajakMiddlewareUpdate = LibValidationsMiddleware(
   LibAuthenticationMiddleware,
-  LibValidationFields.CharField({ field: "namaJabatan" }),
-  LibValidationFields.NumberField({ field: "tunjangan" }),
+  LibValidationFields.CharField({ field: "namaPajak" }),
+  // LibValidationFields.NumberField({ field: "potongan" }),
   /** Your middleware here (validations, sanitizing, etc..) */
   LibValidationExceptionMiddleware,
 );
 
-const JabatanMiddlewareDelete = LibValidationsMiddleware(
+const PajakMiddlewareDelete = LibValidationsMiddleware(
   LibAuthenticationMiddleware
 );
 
 module.exports = {
-  JabatanMiddlewareCreate,
-  JabatanMiddlewareUpdate,
-  JabatanMiddlewareDetail,
-  JabatanMiddlewareList,
-  JabatanMiddlewareDelete,
+  PajakMiddlewareCreate,
+  PajakMiddlewareUpdate,
+  PajakMiddlewareDetail,
+  PajakMiddlewareList,
+  PajakMiddlewareDelete,
 };
   
