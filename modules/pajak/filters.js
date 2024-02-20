@@ -1,5 +1,5 @@
 
-function JabatanFilter(req) {
+function PajakFilter(req) {
   let qSearch = {};
   const { search, limit, page, ...filters } = req.query;
 
@@ -10,7 +10,7 @@ function JabatanFilter(req) {
          * You can change field1 and field2 according to your needs.
          **/
 
-        { namaJabatan: { $regex: ".*" + search + ".*", $options: "i" } },
+        { namaPajak: { $regex: ".*" + search + ".*", $options: "i" } },
       ],
     };
   }
@@ -19,6 +19,6 @@ function JabatanFilter(req) {
 }
 
 module.exports = {
-  JabatanFilter,
+  PajakFilter,
 };
   

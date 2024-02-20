@@ -11,15 +11,15 @@ const {
  * you can remove 'LibAuthenticationMiddleware' from your middleware list.
  */
 
-const JabatanMiddlewareList = LibValidationsMiddleware(
+const KeluargaMiddlewareList = LibValidationsMiddleware(
   LibAuthenticationMiddleware
 );
 
-const JabatanMiddlewareDetail = LibValidationsMiddleware(
+const KeluargaMiddlewareDetail = LibValidationsMiddleware(
   LibAuthenticationMiddleware
 );
 
-const JabatanMiddlewareCreate = LibValidationsMiddleware(
+const KeluargaMiddlewareCreate = LibValidationsMiddleware(
   LibAuthenticationMiddleware,
   /** Your middleware here (validations, sanitizing, etc..) */
 
@@ -33,36 +33,33 @@ const JabatanMiddlewareCreate = LibValidationsMiddleware(
    *  LibValidationFields.CharField({ field: "field2" }),
    *  LibValidationFields.CharField({
    *    field: "field3",
-   *    customs: [JabatanValidatorField3Unique],
+   *    customs: [KeluargaValidatorField3Unique],
    *  }),
    *  LibValidationFields.CharField({
    *    field: "field4",
-   *    sanitizers: [JabatanSanitizerField4ToHash],
+   *    sanitizers: [KeluargaSanitizerField4ToHash],
    *  }),
    *  ...
    */
-  LibValidationFields.CharField({ field: "namaJabatan" }),
-  LibValidationFields.NumberField({ field: "tunjangan" }),
+
   LibValidationExceptionMiddleware,
 );
 
-const JabatanMiddlewareUpdate = LibValidationsMiddleware(
+const KeluargaMiddlewareUpdate = LibValidationsMiddleware(
   LibAuthenticationMiddleware,
-  LibValidationFields.CharField({ field: "namaJabatan" }),
-  LibValidationFields.NumberField({ field: "tunjangan" }),
   /** Your middleware here (validations, sanitizing, etc..) */
   LibValidationExceptionMiddleware,
 );
 
-const JabatanMiddlewareDelete = LibValidationsMiddleware(
+const KeluargaMiddlewareDelete = LibValidationsMiddleware(
   LibAuthenticationMiddleware
 );
 
 module.exports = {
-  JabatanMiddlewareCreate,
-  JabatanMiddlewareUpdate,
-  JabatanMiddlewareDetail,
-  JabatanMiddlewareList,
-  JabatanMiddlewareDelete,
+  KeluargaMiddlewareCreate,
+  KeluargaMiddlewareUpdate,
+  KeluargaMiddlewareDetail,
+  KeluargaMiddlewareList,
+  KeluargaMiddlewareDelete,
 };
   
