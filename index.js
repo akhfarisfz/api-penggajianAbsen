@@ -7,6 +7,7 @@ const { UserRouter } = require("./providers/users/routers");
 const { KaryawanRouter } = require("./modules/karyawan/routers");
 const { JabatanRouter } = require("./modules/jabatan/routers");
 const { PajakRouter } = require("./modules/pajak/routers");
+const { KeluargaRouter } = require("./modules/keluarga/routers");
 
 
 const app = express();
@@ -19,6 +20,7 @@ LibModuleRegister(app, "users", UserRouter);
 LibModuleRegister(app, "karyawan", KaryawanRouter);
 LibModuleRegister(app, "jabatan", JabatanRouter);
 LibModuleRegister(app, "pajak", PajakRouter);
+LibModuleRegister(app, "keluarga", KeluargaRouter);
 
 app.listen(process.env.APP_PORT, function () {
   console.log(`Server berjalan di port ${process.env.APP_PORT}.`);

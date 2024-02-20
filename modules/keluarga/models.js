@@ -4,9 +4,9 @@ const mongoose = require("mongoose");
 const KeluargaSchema = new mongoose.Schema(
   { 
     /** Your schema here */ 
+    jumlahAnak: { type: Number, require: true, default: 0 },
+    tunjanganKeluarga: { type: Number, default: 0 },
     created: { type: Date, default: Date.now },
-    jumlahAnak: { type: Number, default:0 },
-    jumlahTunjangan: { type: Number, default:0}
   },
   { versionKey: false }
 );
