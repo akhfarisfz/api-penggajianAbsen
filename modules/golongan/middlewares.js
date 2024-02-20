@@ -11,15 +11,15 @@ const {
  * you can remove 'LibAuthenticationMiddleware' from your middleware list.
  */
 
-const AbsensiMiddlewareList = LibValidationsMiddleware(
+const GolonganMiddlewareList = LibValidationsMiddleware(
   LibAuthenticationMiddleware
 );
 
-const AbsensiMiddlewareDetail = LibValidationsMiddleware(
+const GolonganMiddlewareDetail = LibValidationsMiddleware(
   LibAuthenticationMiddleware
 );
 
-const AbsensiMiddlewareCreate = LibValidationsMiddleware(
+const GolonganMiddlewareCreate = LibValidationsMiddleware(
   LibAuthenticationMiddleware,
   /** Your middleware here (validations, sanitizing, etc..) */
 
@@ -33,40 +33,35 @@ const AbsensiMiddlewareCreate = LibValidationsMiddleware(
    *  LibValidationFields.CharField({ field: "field2" }),
    *  LibValidationFields.CharField({
    *    field: "field3",
-   *    customs: [AbsensiValidatorField3Unique],
+   *    customs: [GolonganValidatorField3Unique],
    *  }),
    *  LibValidationFields.CharField({
    *    field: "field4",
-   *    sanitizers: [AbsensiSanitizerField4ToHash],
+   *    sanitizers: [GolonganSanitizerField4ToHash],
    *  }),
    *  ...
    */
-  LibValidationFields.NumberField({ field: "Hadir" }),
-  LibValidationFields.NumberField({ field: "Izin" }),
-  LibValidationFields.NumberField({ field: "Sakit" }),
-  LibValidationFields.NumberField({ field: "Alpa" }),
-  LibValidationFields.NumberField({ field: "Terlambat" }),
-  LibValidationFields.NumberField({ field: "Nominal_Alpa" }),
-  LibValidationFields.NumberField({ field: "Nominal_Terlambat" }),
+  LibValidationFields.CharField({ field: "namaGolongan" }),
+  LibValidationFields.NumberField({ field: "tunjangan" }),
 
   LibValidationExceptionMiddleware,
 );
 
-const AbsensiMiddlewareUpdate = LibValidationsMiddleware(
+const GolonganMiddlewareUpdate = LibValidationsMiddleware(
   LibAuthenticationMiddleware,
   /** Your middleware here (validations, sanitizing, etc..) */
   LibValidationExceptionMiddleware,
 );
 
-const AbsensiMiddlewareDelete = LibValidationsMiddleware(
+const GolonganMiddlewareDelete = LibValidationsMiddleware(
   LibAuthenticationMiddleware
 );
 
 module.exports = {
-  AbsensiMiddlewareCreate,
-  AbsensiMiddlewareUpdate,
-  AbsensiMiddlewareDetail,
-  AbsensiMiddlewareList,
-  AbsensiMiddlewareDelete,
+  GolonganMiddlewareCreate,
+  GolonganMiddlewareUpdate,
+  GolonganMiddlewareDetail,
+  GolonganMiddlewareList,
+  GolonganMiddlewareDelete,
 };
   

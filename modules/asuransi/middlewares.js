@@ -11,15 +11,15 @@ const {
  * you can remove 'LibAuthenticationMiddleware' from your middleware list.
  */
 
-const AbsensiMiddlewareList = LibValidationsMiddleware(
+const AsuransiMiddlewareList = LibValidationsMiddleware(
   LibAuthenticationMiddleware
 );
 
-const AbsensiMiddlewareDetail = LibValidationsMiddleware(
+const AsuransiMiddlewareDetail = LibValidationsMiddleware(
   LibAuthenticationMiddleware
 );
 
-const AbsensiMiddlewareCreate = LibValidationsMiddleware(
+const AsuransiMiddlewareCreate = LibValidationsMiddleware(
   LibAuthenticationMiddleware,
   /** Your middleware here (validations, sanitizing, etc..) */
 
@@ -33,40 +33,40 @@ const AbsensiMiddlewareCreate = LibValidationsMiddleware(
    *  LibValidationFields.CharField({ field: "field2" }),
    *  LibValidationFields.CharField({
    *    field: "field3",
-   *    customs: [AbsensiValidatorField3Unique],
+   *    customs: [AsuransiValidatorField3Unique],
    *  }),
    *  LibValidationFields.CharField({
    *    field: "field4",
-   *    sanitizers: [AbsensiSanitizerField4ToHash],
+   *    sanitizers: [AsuransiSanitizerField4ToHash],
    *  }),
    *  ...
    */
-  LibValidationFields.NumberField({ field: "Hadir" }),
-  LibValidationFields.NumberField({ field: "Izin" }),
-  LibValidationFields.NumberField({ field: "Sakit" }),
-  LibValidationFields.NumberField({ field: "Alpa" }),
-  LibValidationFields.NumberField({ field: "Terlambat" }),
-  LibValidationFields.NumberField({ field: "Nominal_Alpa" }),
-  LibValidationFields.NumberField({ field: "Nominal_Terlambat" }),
+  LibValidationFields.CharField({ field: "namaAsuransi" }),
+  LibValidationFields.CharField({ field: "kelas" }),
+  LibValidationFields.NumberField({ field: "potongan" }),
 
   LibValidationExceptionMiddleware,
 );
 
-const AbsensiMiddlewareUpdate = LibValidationsMiddleware(
+const AsuransiMiddlewareUpdate = LibValidationsMiddleware(
   LibAuthenticationMiddleware,
   /** Your middleware here (validations, sanitizing, etc..) */
+  
+  LibValidationFields.CharField({ field: "namaAsuransi" }),
+  LibValidationFields.CharField({ field: "kelas" }),
+  LibValidationFields.NumberField({ field: "potongan" }),
   LibValidationExceptionMiddleware,
 );
 
-const AbsensiMiddlewareDelete = LibValidationsMiddleware(
+const AsuransiMiddlewareDelete = LibValidationsMiddleware(
   LibAuthenticationMiddleware
 );
 
 module.exports = {
-  AbsensiMiddlewareCreate,
-  AbsensiMiddlewareUpdate,
-  AbsensiMiddlewareDetail,
-  AbsensiMiddlewareList,
-  AbsensiMiddlewareDelete,
+  AsuransiMiddlewareCreate,
+  AsuransiMiddlewareUpdate,
+  AsuransiMiddlewareDetail,
+  AsuransiMiddlewareList,
+  AsuransiMiddlewareDelete,
 };
   

@@ -43,12 +43,16 @@ const KaryawanMiddlewareCreate = LibValidationsMiddleware(
    */
   LibValidationFields.CharField({ field: "nik" }),
   LibValidationFields.CharField({ field: "nama" }),
+  LibValidationFields.CharField({ field: "alamat" }),
+  LibValidationFields.CharField({ field: "no_Telepon" }),
+  LibValidationFields.CharField({ field: "bank" }),
+  LibValidationFields.CharField({ field: "no_rekening" }),
   LibValidationFields.NumberField({ field: "gajiPokok" }),
-  LibValidationFields.CharField({ field: "golongan.nama" }),
-  LibValidationFields.CharField({ field: "jabatan.nama" }),
-  LibValidationFields.NumberField({ field: "tunjangan.tunjanganGolongan" }),
-  LibValidationFields.NumberField({ field: "tunjangan.tunjanganJabatan", }),
-  LibValidationFields.NumberField({ field: "tunjangan.tunjanganKeluarga", }),
+  // LibValidationFields.CharField({ field: "golongan.nama" }),
+  // LibValidationFields.CharField({ field: "jabatan.nama" }),
+  // LibValidationFields.NumberField({ field: "tunjangan.tunjanganGolongan" }),
+  // LibValidationFields.NumberField({ field: "tunjangan.tunjanganJabatan", }),
+  // LibValidationFields.NumberField({ field: "tunjangan.tunjanganKeluarga", }),
   LibValidationExceptionMiddleware,
 );
 
@@ -56,12 +60,11 @@ const KaryawanMiddlewareUpdate = LibValidationsMiddleware(
   LibAuthenticationMiddleware,
   LibValidationFields.CharField({ field: "nik" }),
   LibValidationFields.CharField({ field: "nama" }),
+  LibValidationFields.CharField({ field: "alamat" }),
+  LibValidationFields.CharField({ field: "no_Telepon" }),
+  LibValidationFields.CharField({ field: "bank" }),
+  LibValidationFields.CharField({ field: "no_rekening" }),
   LibValidationFields.NumberField({ field: "gajiPokok" }),
-  LibValidationFields.CharField({ field: "golongan.nama" }),
-  LibValidationFields.CharField({ field: "jabatan.nama" }),
-  LibValidationFields.NumberField({ field: "tunjangan.tunjanganGolongan" }),
-  LibValidationFields.NumberField({ field: "tunjangan.tunjanganJabatan", }),
-  LibValidationFields.NumberField({ field: "tunjangan.tunjanganKeluarga", }),
   /** Your middleware here (validations, sanitizing, etc..) */
   LibValidationExceptionMiddleware,
 );
