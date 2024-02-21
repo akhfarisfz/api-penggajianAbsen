@@ -13,6 +13,8 @@ const { AbsensiRouter } = require("./modules/absensi/routers");
 const { AsuransiRouter } = require("./modules/asuransi/routers");
 const { GolonganRouter } = require("./modules/golongan/routers");
 const { PenggajianRouter } = require("./modules/penggajian/routers");
+const cors = require("cors")
+
 
 
 const app = express();
@@ -20,6 +22,10 @@ const app = express();
 DatabaseMongoDBConnector({hideSuccessMessage: false});
 
 app.use(express.json());
+app.use(
+  cors({
+    origin: "*",
+}));
 
 LibModuleRegister(app, "users", UserRouter);
 LibModuleRegister(app, "karyawan", KaryawanRouter);
