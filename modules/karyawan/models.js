@@ -9,11 +9,11 @@ const KaryawanSchema = new mongoose.Schema(
     alamat: { type: String },
     no_Telepon: { type: String },
     bank: { type: String },
-    noRekening: { type: String },
+    no_rekening: { type: String },
     gajiPokok: { type: Number },
-    golongan: {
-      nama: { type: String },
-    },
+    // golongan: {
+    //   nama: { type: String },
+    // },
     // jabatan: {
     //   nama: { type: String },
     // },
