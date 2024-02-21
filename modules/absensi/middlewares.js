@@ -46,8 +46,8 @@ const AbsensiMiddlewareCreate = LibValidationsMiddleware(
   LibValidationFields.NumberField({ field: "Sakit" }),
   LibValidationFields.NumberField({ field: "Alpa" }),
   LibValidationFields.NumberField({ field: "Terlambat" }),
-  LibValidationFields.NumberField({ field: "Nominal_Alpa" }),
-  LibValidationFields.NumberField({ field: "Nominal_Terlambat" }),
+  LibValidationFields.NumberField({ field: "nominalAlpa" }),
+  LibValidationFields.NumberField({ field: "nominalTerlambat" }),
 
   LibValidationExceptionMiddleware,
 );
