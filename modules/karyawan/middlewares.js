@@ -48,11 +48,12 @@ const KaryawanMiddlewareCreate = LibValidationsMiddleware(
   LibValidationFields.CharField({ field: "bank" }),
   LibValidationFields.CharField({ field: "no_rekening" }),
   LibValidationFields.NumberField({ field: "gajiPokok" }),
-  // LibValidationFields.CharField({ field: "golongan.nama" }),
-  // LibValidationFields.CharField({ field: "jabatan.nama" }),
-  // LibValidationFields.NumberField({ field: "tunjangan.tunjanganGolongan" }),
-  // LibValidationFields.NumberField({ field: "tunjangan.tunjanganJabatan", }),
-  // LibValidationFields.NumberField({ field: "tunjangan.tunjanganKeluarga", }),
+  LibValidationFields.CharField({ field: "golongan.nama" }),
+  LibValidationFields.CharField({ field: "jabatan.nama" }),
+  LibValidationFields.NumberField({ field: "tunjangan.tunjanganGolongan" }),
+  LibValidationFields.NumberField({ field: "tunjangan.tunjanganJabatan", }),
+  LibValidationFields.NumberField({ field: "tunjangan.tunjanganKeluarga", }),
+  LibValidationFields.CharField({ field: "StatusPernikahan", }),
   LibValidationExceptionMiddleware,
 );
 
