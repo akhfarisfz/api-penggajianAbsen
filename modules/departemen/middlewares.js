@@ -48,8 +48,6 @@ const DepartemenMiddlewareCreate = LibValidationsMiddleware(
 
 const DepartemenMiddlewareUpdate = LibValidationsMiddleware(
   LibAuthenticationMiddleware,
-  LibValidationFields.CharField({ field: "namaDepartemen" }),
-  LibValidationFields.NumberField({ field: "tunjanganDepartemen" }),
   /** Your middleware here (validations, sanitizing, etc..) */
   LibValidationExceptionMiddleware,
 );

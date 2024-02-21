@@ -58,13 +58,13 @@ const KaryawanMiddlewareCreate = LibValidationsMiddleware(
 
 const KaryawanMiddlewareUpdate = LibValidationsMiddleware(
   LibAuthenticationMiddleware,
-  LibValidationFields.CharField({ field: "nik" }),
-  LibValidationFields.CharField({ field: "nama" }),
-  LibValidationFields.CharField({ field: "alamat" }),
-  LibValidationFields.CharField({ field: "no_Telepon" }),
-  LibValidationFields.CharField({ field: "bank" }),
-  LibValidationFields.CharField({ field: "no_rekening" }),
-  LibValidationFields.NumberField({ field: "gajiPokok" }),
+  // LibValidationFields.CharField({ field: "nik" }),
+  // LibValidationFields.CharField({ field: "nama" }),
+  // LibValidationFields.CharField({ field: "alamat" }),
+  // LibValidationFields.CharField({ field: "no_Telepon" }),
+  // LibValidationFields.CharField({ field: "bank" }),
+  // LibValidationFields.CharField({ field: "no_rekening" }),
+  // LibValidationFields.NumberField({ field: "gajiPokok" }),
   /** Your middleware here (validations, sanitizing, etc..) */
   LibValidationExceptionMiddleware,
 );

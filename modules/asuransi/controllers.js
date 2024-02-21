@@ -2,6 +2,7 @@
 const { LibPaginationResponse } = require("../../libs/paginations");
 const { LibHTTPResponseException } = require("../../libs/https");
 const { Asuransi } = require("./models");
+const{ AsuransiFilter} = require("./filters")
 
 const AsuransiControllerList =  async (req, res) => {
   try {
@@ -10,7 +11,7 @@ const AsuransiControllerList =  async (req, res) => {
     // example:
     // const results = YourModel.find(YourFilter(req));
     // return LibPaginationResponse(req, res, results);
-    const results = Asuransi.find(AbsensiControllerCreate(req));
+    const results = Asuransi.find(AsuransiFilter(req));
     return LibPaginationResponse(req, res, results);
   } catch (error) {
     return LibHTTPResponseException(res, error);
