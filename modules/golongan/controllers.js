@@ -2,6 +2,8 @@
 const { LibPaginationResponse } = require("../../libs/paginations");
 const { LibHTTPResponseException } = require("../../libs/https");
 const { Golongan } = require("./models");
+const { GolonganFilter } = require("./filters");
+
 
 const GolonganControllerList =  async (req, res) => {
   try {
@@ -12,7 +14,7 @@ const GolonganControllerList =  async (req, res) => {
     // return LibPaginationResponse(req, res, results);
 
 
-    const results = Golongan.find(AbsensiControllerCreate(req));
+    const results = Golongan.find(GolonganFilter(req));
     return LibPaginationResponse(req, res, results);
   } catch (error) {
     return LibHTTPResponseException(res, error);
