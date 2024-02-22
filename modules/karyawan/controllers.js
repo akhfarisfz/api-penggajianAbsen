@@ -50,7 +50,11 @@ const KaryawanControllerUpdate = async (req, res) => {
 
 const KaryawanControllerDelete = async (req, res) => {
   try {
-    // Your code here
+    //nanti hapus
+    let karyawan = await Karyawan.findOne({ _id: req.params.id });
+    if (!karyawan) throw { status: 404, message: "Not found" };
+    await Karyawan.findByIdAndDelete(req.params.id);
+    res.status(204).json(null);
   } catch (error) {
     return LibHTTPResponseException(res, error);
   }

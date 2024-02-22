@@ -10,7 +10,7 @@ function PajakFilter(req) {
          * You can change field1 and field2 according to your needs.
          **/
 
-        { namaPajak: { $regex: ".*" + search + ".*", $options: "i" } },
+        { nama: { $regex: ".*" + search + ".*", $options: "i" } },
       ],
     };
   }

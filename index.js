@@ -29,14 +29,17 @@ app.use(
 
 LibModuleRegister(app, "users", UserRouter);
 LibModuleRegister(app, "karyawan", KaryawanRouter);
+LibModuleRegister(app, "penggajian", PenggajianRouter);
+
+//tunjangan
 LibModuleRegister(app, "jabatan", JabatanRouter);
-LibModuleRegister(app, "pajak", PajakRouter);
 LibModuleRegister(app, "keluarga", KeluargaRouter);
 LibModuleRegister(app, "departemen", DepartemenRouter);
+LibModuleRegister(app, "golongan", GolonganRouter);
+// potongan
+LibModuleRegister(app, "pajak", PajakRouter);
 LibModuleRegister(app, "absensi", AbsensiRouter);
 LibModuleRegister(app, "asuransi", AsuransiRouter);
-LibModuleRegister(app, "golongan", GolonganRouter);
-LibModuleRegister(app, "penggajian", PenggajianRouter);
 
 app.listen(process.env.APP_PORT, function () {
   console.log(`Server berjalan di port ${process.env.APP_PORT}.`);

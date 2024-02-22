@@ -11,7 +11,7 @@ function KeluargaFilter(req) {
          **/
 
         { jumlahAnak: { $regex: ".*" + search + ".*", $options: "i" } },
-        { tunjanganKeluarga: { $regex: ".*" + search + ".*", $options: "i" } },
+        { tunjangan: { $regex: ".*" + search + ".*", $options: "i" } },
       ],
     };
   }

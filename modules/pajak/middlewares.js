@@ -41,15 +41,15 @@ const PajakMiddlewareCreate = LibValidationsMiddleware(
    *  }),
    *  ...
    */
-  LibValidationFields.CharField({ field: "namaPajak" }),
-  // LibValidationFields.NumberField({ field: "potongan" }),
+  LibValidationFields.CharField({ field: "nama" }),
+  LibValidationFields.NumberField({ field: "potongan" }),
   LibValidationExceptionMiddleware,
 );
 
 const PajakMiddlewareUpdate = LibValidationsMiddleware(
   LibAuthenticationMiddleware,
-  LibValidationFields.CharField({ field: "namaPajak" }),
-  // LibValidationFields.NumberField({ field: "potongan" }),
+  LibValidationFields.CharField({ field: "nama" }),
+  LibValidationFields.NumberField({ field: "potongan" }),
   /** Your middleware here (validations, sanitizing, etc..) */
   LibValidationExceptionMiddleware,
 );

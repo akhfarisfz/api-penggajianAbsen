@@ -41,7 +41,7 @@ const GolonganMiddlewareCreate = LibValidationsMiddleware(
    *  }),
    *  ...
    */
-  LibValidationFields.CharField({ field: "namaGolongan" }),
+  LibValidationFields.CharField({ field: "nama" }),
   LibValidationFields.NumberField({ field: "tunjangan" }),
 
   LibValidationExceptionMiddleware,
