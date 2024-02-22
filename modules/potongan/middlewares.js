@@ -11,15 +11,15 @@ const {
  * you can remove 'LibAuthenticationMiddleware' from your middleware list.
  */
 
-const AsuransiMiddlewareList = LibValidationsMiddleware(
+const PotonganMiddlewareList = LibValidationsMiddleware(
   LibAuthenticationMiddleware
 );
 
-const AsuransiMiddlewareDetail = LibValidationsMiddleware(
+const PotonganMiddlewareDetail = LibValidationsMiddleware(
   LibAuthenticationMiddleware
 );
 
-const AsuransiMiddlewareCreate = LibValidationsMiddleware(
+const PotonganMiddlewareCreate = LibValidationsMiddleware(
   LibAuthenticationMiddleware,
   /** Your middleware here (validations, sanitizing, etc..) */
 
@@ -33,39 +33,34 @@ const AsuransiMiddlewareCreate = LibValidationsMiddleware(
    *  LibValidationFields.CharField({ field: "field2" }),
    *  LibValidationFields.CharField({
    *    field: "field3",
-   *    customs: [AsuransiValidatorField3Unique],
+   *    customs: [PotonganValidatorField3Unique],
    *  }),
    *  LibValidationFields.CharField({
    *    field: "field4",
-   *    sanitizers: [AsuransiSanitizerField4ToHash],
+   *    sanitizers: [PotonganSanitizerField4ToHash],
    *  }),
    *  ...
    */
   LibValidationFields.CharField({ field: "nama" }),
-  LibValidationFields.CharField({ field: "kelas" }),
   LibValidationFields.NumberField({ field: "potongan" }),
-
   LibValidationExceptionMiddleware,
 );
 
-const AsuransiMiddlewareUpdate = LibValidationsMiddleware(
+const PotonganMiddlewareUpdate = LibValidationsMiddleware(
   LibAuthenticationMiddleware,
   /** Your middleware here (validations, sanitizing, etc..) */
-  LibValidationFields.CharField({ field: "nama" }),
-  LibValidationFields.CharField({ field: "kelas" }),
-  LibValidationFields.NumberField({ field: "potongan" }),
   LibValidationExceptionMiddleware,
 );
 
-const AsuransiMiddlewareDelete = LibValidationsMiddleware(
+const PotonganMiddlewareDelete = LibValidationsMiddleware(
   LibAuthenticationMiddleware
 );
 
 module.exports = {
-  AsuransiMiddlewareCreate,
-  AsuransiMiddlewareUpdate,
-  AsuransiMiddlewareDetail,
-  AsuransiMiddlewareList,
-  AsuransiMiddlewareDelete,
+  PotonganMiddlewareCreate,
+  PotonganMiddlewareUpdate,
+  PotonganMiddlewareDetail,
+  PotonganMiddlewareList,
+  PotonganMiddlewareDelete,
 };
   

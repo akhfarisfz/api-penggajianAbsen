@@ -18,6 +18,7 @@ const KaryawanControllerCreate = async (req, res) => {
   try {
     // Your code here
     await Karyawan.create(req.cleanedData);
+    
     res.status(201).json(req.cleanedData);
   } catch (error) {
     return LibHTTPResponseException(res, error);

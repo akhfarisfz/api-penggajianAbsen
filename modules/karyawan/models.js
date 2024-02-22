@@ -12,10 +12,6 @@ const KaryawanSchema = new mongoose.Schema(
     no_rekening: { type: String },
     gajiPokok: { type: Number },
     //Tunjangan
-    golongan: {
-      nama: { type: String },
-      tunjangan: { type: Number, default: 0 },
-    },
     jabatan: {
       nama: { type: String },
       tunjangan: { type: Number, default: 0 },
@@ -30,15 +26,7 @@ const KaryawanSchema = new mongoose.Schema(
       default: "belum",
     },
     //Potongan
-    absensi: {
-      Hadir: { type: Number, default: 0 },
-      Izin: { type: Number, default: 0 },
-      Sakit: { type: Number, default: 0 },
-      Alpa: { type: Number, default: 0 },
-      Terlambat: { type: Number, default: 0 },
-      nominalAlpa: { type: Number, default: 0 },
-      nominalTerlambat: { type: Number, default: 0 },
-    },
+    
     pajak: {
       nama: { type: String },
       potongan: { type: Number, default: 0 },
