@@ -8,7 +8,7 @@ const JabatanSchema = new mongoose.Schema(
     tunjangan: { type: Number, default: 0 },
     created: { type: Date, default: Date.now },
   },
-  { versionKey: false }
+  // { versionKey: false }
 );
 
 const Jabatan = mongoose.model("Jabatan", JabatanSchema);

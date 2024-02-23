@@ -48,6 +48,8 @@ const PotonganMiddlewareCreate = LibValidationsMiddleware(
 
 const PotonganMiddlewareUpdate = LibValidationsMiddleware(
   LibAuthenticationMiddleware,
+  LibValidationFields.CharField({ field: "nama" }),
+  LibValidationFields.NumberField({ field: "potongan" }),
   /** Your middleware here (validations, sanitizing, etc..) */
   LibValidationExceptionMiddleware,
 );

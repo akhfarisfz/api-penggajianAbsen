@@ -12,7 +12,9 @@ const KaryawanSchema = new mongoose.Schema(
     no_rekening: { type: String },
     gajiPokok: { type: Number },
     //Tunjangan
+    jabatanRef: {type: mongoose.Schema.ObjectId, ref: 'Jabatan'},
     jabatan: {
+      
       nama: { type: String },
       tunjangan: { type: Number, default: 0 },
     },
@@ -38,7 +40,7 @@ const KaryawanSchema = new mongoose.Schema(
     },
     created: { type: Date, default: Date.now },
   },
-  { versionKey: false }
+  // { versionKey: true }
 );
 
 const Karyawan = mongoose.model("Karyawan", KaryawanSchema);

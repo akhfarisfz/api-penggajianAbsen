@@ -13,7 +13,7 @@ const PotonganControllerList =  async (req, res) => {
     // return LibPaginationResponse(req, res, results);
 
 
-    const results = Potongan.find(PotonganFilter(req));
+    const results = Potongan.find(PotonganFilter(req)).sort([["created", -1]]);
     return LibPaginationResponse(req, res, results);
   } catch (error) {
     return LibHTTPResponseException(res, error);
