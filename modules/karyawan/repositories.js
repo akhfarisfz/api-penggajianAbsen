@@ -1,11 +1,20 @@
-const { Asuransi } = require("../asuransi/models");
+const { nominalAlpa, nominalTerlambat } = require("../absensi/repositories");
+// Hitung potongan pajak
 
-const karyawanrespositoriesjumlahgaji = (gaji) => {
-    const gaji = gajiPokok;
-    return gaji + tujangan - absensi - pajak - Asuransi;
+
+
+
+
+//Hitung total potongan absensi
+const potonganAbsensi = (jumlahAlpa, jumlahTerlambat) => {
+    const potonganAlpa = nominalAlpa(jumlahAlpa);
+    const potonganTerlambat = nominalTerlambat(jumlahTerlambat);
+    const totalPotonganAbsensi = potonganAlpa + potonganTerlambat;
+    return totalPotonganAbsensi
 };
+
 
 
 module.exports = {
-    karyawanrespositoriesjumlahgaji
-};
+    potonganAbsensi,
+  };

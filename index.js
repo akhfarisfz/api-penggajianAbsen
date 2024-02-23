@@ -7,7 +7,6 @@ const { UserRouter } = require("./providers/users/routers");
 const { KaryawanRouter } = require("./modules/karyawan/routers");
 const { JabatanRouter } = require("./modules/jabatan/routers");
 const { PotonganRouter } = require("./modules/potongan/routers");
-const { KeluargaRouter } = require("./modules/keluarga/routers");
 const { DepartemenRouter } = require("./modules/departemen/routers");
 const { AbsensiRouter } = require("./modules/absensi/routers");
 const { PenggajianRouter } = require("./modules/penggajian/routers");
@@ -31,7 +30,6 @@ LibModuleRegister(app, "penggajian", PenggajianRouter);
 
 //tunjangan
 LibModuleRegister(app, "jabatan", JabatanRouter);
-LibModuleRegister(app, "keluarga", KeluargaRouter);
 LibModuleRegister(app, "departemen", DepartemenRouter);
 // potongan
 LibModuleRegister(app, "potongan", PotonganRouter);

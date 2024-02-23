@@ -10,33 +10,27 @@ const KaryawanSchema = new mongoose.Schema(
     no_Telepon: { type: String },
     bank: { type: String },
     no_rekening: { type: String },
-    gajiPokok: { type: Number },
-    //Tunjangan
-    jabatanRef: {type: mongoose.Schema.ObjectId, ref: 'Jabatan'},
     jabatan: {
-      
       nama: { type: String },
+      gajiPokok: { type: Number, default: 0 },
       tunjangan: { type: Number, default: 0 },
     },
-    keluarga: {
-      jumlahAnak: { type: Number, default: 0 },
-      tunjangan: { type: Number, default: 0 }
-    },
-    statusPernikahan: {
-      type: String,
-      enum: ["menikah", "belum", "bercerai"],
-      default: "belum",
-    },
+  
     //Potongan
-    
-    pajak: {
+    potongan: {
       nama: { type: String },
       potongan: { type: Number, default: 0 },
+      jumlahpotongan:{type:Number,default:0},
     },
-    asuransi: {
-      nama: { type: String },
-      kelas: { type: String },
-      potongan: { type: Number, default: 0 },
+    absensi:{
+      Hadir: { type: Number, default: 0 },
+      Izin: { type: Number, default: 0 },
+      Sakit: { type: Number, default: 0 },
+      Alpa: { type: Number, default: 0 },
+      Terlambat: { type: Number, default: 0 },
+      nominalAlpa: { type: Number, default: 0 },
+      nominalTerlambat: { type: Number, default: 0 },
+      jumlahpotonganAbsensi:{type:Number,default:0},
     },
     created: { type: Date, default: Date.now },
   },
@@ -47,5 +41,6 @@ const Karyawan = mongoose.model("Karyawan", KaryawanSchema);
 
 module.exports = {
   Karyawan,
+  
 };
 

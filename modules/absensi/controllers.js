@@ -3,6 +3,7 @@ const { LibPaginationResponse } = require("../../libs/paginations");
 const { LibHTTPResponseException } = require("../../libs/https");
 const { Absensi } = require("./models");
 const { AbsensiFilter } = require("./filters");
+const { AbsensiServiceCreate } = require("../absensi/services");
 
 const AbsensiControllerList =  async (req, res) => {
   try {
@@ -16,8 +17,9 @@ const AbsensiControllerList =  async (req, res) => {
 
 const AbsensiControllerCreate = async (req, res) => {
   try {
-    await Absensi.create(req.cleanedData);
-    res.status(201).json(req.cleanedData);
+    req.cleanedData = AbsensiServiceCreate(req);
+    const results = Absensi.create(req.cleanedData);
+    res.status(201).json(results);
   } catch (error) {
     return LibHTTPResponseException(res, error);
   }

@@ -79,12 +79,25 @@ const PenggajianMiddlewareUpdate = LibValidationsMiddleware(
   LibValidationFields.CharField({ field: "no_Telepon" }),
   LibValidationFields.CharField({ field: "bank" }),
   LibValidationFields.CharField({ field: "no_rekening" }),
-  LibValidationFields.NumberField({ field: "gajiPokok" }),
   LibValidationFields.CharField({ field: "jabatan.nama" }),
-  LibValidationFields.NumberField({ field: "jabatan.tunjangan" }),
-  LibValidationFields.NumberField({ field: "keluarga.jumlahAnak" }),
-  LibValidationFields.NumberField({ field: "keluarga.tunjangan" }),
-  LibValidationFields.CharField({ field: "statusPernikahan" }),
+  LibValidationFields.NumberField({ field: "jabatan.gajiPokok" }),
+  LibValidationFields.NumberField({ 
+    field: "jabatan.tunjangan",
+    required: false,
+    minLength: 0,
+    customs: [
+      (value, { req }) => {
+        const gajiPokok = req.body.jabatan.gajiPokok; 
+        const maxTunjangan = 0.2 * gajiPokok; // Menghitung 20% dari gaji pokok
+    
+        if (value > maxTunjangan) {
+          throw new Error("Tunjangan tidak boleh melebihi 20% dari gaji pokok");
+        }
+    
+        return value;
+      }
+    ],
+   }),
   LibValidationFields.NumberField({ field: "absensi.Hadir" }),
   LibValidationFields.NumberField({ field: "absensi.Izin" }),
   LibValidationFields.NumberField({ field: "absensi.Sakit" }),
