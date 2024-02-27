@@ -47,13 +47,13 @@ const KaryawanMiddlewareCreate = LibValidationsMiddleware(
   LibValidationFields.CharField({ field: "no_Telepon" }),
   LibValidationFields.CharField({ field: "bank" }),
   LibValidationFields.CharField({ field: "no_rekening" }),
+  LibValidationFields.NumberField({ field: "gajiPokok" }),
   LibValidationFields.ObjectField({ field: "jabatan" }),
   LibValidationFields.CharField({ field: "jabatan.nama" }),
   LibValidationFields.NumberField({ field: "jabatan.gajiPokok" }),
   LibValidationFields.NumberField({ field: "jabatan.tunjangan" }),
+  //Object Absensi
   LibValidationFields.ObjectField({ field: "absensi" }),
-
-  // LibValidationFields.CharField({ field: "jabatan._id" }),
 
   // Asumsi Hari kerja efektif 30 hari
   LibValidationFields.NumberField({
@@ -81,11 +81,9 @@ const KaryawanMiddlewareCreate = LibValidationsMiddleware(
   }),
   LibValidationFields.NumberField({ field: "absensi.Alpa", min: 0 }),
   LibValidationFields.NumberField({ field: "absensi.Terlambat", min: 0 }),
-  LibValidationFields.NumberField({ field: "absensi.nominalAlpa", min: 0 }),
-  LibValidationFields.NumberField({ field: "absensi.nominalTerlambat", min: 0 }),
-  
-  LibValidationFields.CharField({ field: "potongan.nama" }),
-  LibValidationFields.NumberField({ field: "potongan.potongan" }),
+  //Array Potongan
+  LibValidationFields.ArrayField({ field: "potongan", min: 0 }),
+  LibValidationFields.CharField({ field: "potongan.*.nama",min:0 }),
 
 
   LibValidationExceptionMiddleware,
@@ -101,25 +99,26 @@ const KaryawanMiddlewareUpdate = LibValidationsMiddleware(
   LibValidationFields.CharField({ field: "no_rekening" }),
   LibValidationFields.NumberField({ field: "gajiPokok" }),
   LibValidationFields.ObjectField({ field: "jabatan" }),
+  LibValidationFields.CharField({ field: "jabatanRef" }),
 
-  // LibValidationFields.CharField({ field: "jabatan._id" }),
-  LibValidationFields.CharField({ field: "jabatan.nama" }),
-  LibValidationFields.NumberField({ field: "jabatan.tunjangan" }),
-  LibValidationFields.ObjectField({ field: "keluarga" }),
-  LibValidationFields.NumberField({ field: "keluarga.jumlahAnak" }),
-  LibValidationFields.NumberField({ field: "keluarga.tunjangan" }),
-  LibValidationFields.CharField({ field: "statusPernikahan" }),
-  LibValidationFields.ObjectField({ field: "absensi" }),
+  // // LibValidationFields.CharField({ field: "jabatan._id" }),
+  // LibValidationFields.CharField({ field: "jabatan.nama" }),
+  // LibValidationFields.NumberField({ field: "jabatan.tunjangan" }),
+  // LibValidationFields.ObjectField({ field: "keluarga" }),
+  // LibValidationFields.NumberField({ field: "keluarga.jumlahAnak" }),
+  // LibValidationFields.NumberField({ field: "keluarga.tunjangan" }),
+  // LibValidationFields.CharField({ field: "statusPernikahan" }),
+  // LibValidationFields.ObjectField({ field: "absensi" }),
 
-  LibValidationFields.NumberField({ field: "absensi.Alpa", min: 0 }),
-  LibValidationFields.NumberField({ field: "absensi.Terlambat", min: 0 }),
-  LibValidationFields.NumberField({ field: "absensi.nominalAlpa", min: 0 }),
-  LibValidationFields.NumberField({ field: "absensi.nominalTerlambat", min: 0 }),
-  LibValidationFields.CharField({ field: "pajak.nama" }),
-  LibValidationFields.NumberField({ field: "pajak.potongan" }),
-  LibValidationFields.CharField({ field: "asuransi.nama" }),
-  LibValidationFields.CharField({ field: "asuransi.kelas" }),
-  LibValidationFields.NumberField({ field: "asuransi.potongan" }),
+  // LibValidationFields.NumberField({ field: "absensi.Alpa", min: 0 }),
+  // LibValidationFields.NumberField({ field: "absensi.Terlambat", min: 0 }),
+  // LibValidationFields.NumberField({ field: "absensi.nominalAlpa", min: 0 }),
+  // LibValidationFields.NumberField({ field: "absensi.nominalTerlambat", min: 0 }),
+  // LibValidationFields.CharField({ field: "pajak.nama" }),
+  // LibValidationFields.NumberField({ field: "pajak.potongan" }),
+  // LibValidationFields.CharField({ field: "asuransi.nama" }),
+  // LibValidationFields.CharField({ field: "asuransi.kelas" }),
+  // LibValidationFields.NumberField({ field: "asuransi.potongan" }),
   LibValidationExceptionMiddleware,
 );
 

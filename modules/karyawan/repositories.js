@@ -1,20 +1,23 @@
-const { nominalAlpa, nominalTerlambat } = require("../absensi/repositories");
-// Hitung potongan pajak
 
+//Set jumlahpotongan kembali ke data
+const setpotongan = (jumlahPotonganArray, req) => {
+    const pajak = req.cleanedData.potongan;
+    for (let i = 0; i < pajak.length; i++) {
+        pajak[i].jumlahPotongan = jumlahPotonganArray[i];
+    }
+    return req.cleanedData;
+};
 
-
-
-
-//Hitung total potongan absensi
-const potonganAbsensi = (jumlahAlpa, jumlahTerlambat) => {
-    const potonganAlpa = nominalAlpa(jumlahAlpa);
-    const potonganTerlambat = nominalTerlambat(jumlahTerlambat);
-    const totalPotonganAbsensi = potonganAlpa + potonganTerlambat;
-    return totalPotonganAbsensi
+//Set hasil perhitungan absensi ke data 
+const setpotonganAbsensi = (potonganAlpa,potonganTerlambat,totalPotonganAbsensi,req)=>{
+    req.cleanedData.absensi.nominalTerlambat=potonganTerlambat;
+    req.cleanedData.absensi.nominalAlpa=potonganAlpa;
+    req.cleanedData.absensi.jumlahpotonganAbsensi=totalPotonganAbsensi;
+    return req.cleanedData;
 };
 
 
-
 module.exports = {
-    potonganAbsensi,
-  };
+    setpotonganAbsensi,
+    setpotongan
+};

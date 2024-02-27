@@ -1,30 +1,31 @@
-let potongan = 0.05;
-const nominalAlpa = (Alpa) => {
-    if (Alpa > 3) {
-        return potongan;
+const nominalAlpa = (Alpa,gaji) => {
+    if (Alpa > 2) {
+        const nominal = Alpa*(0.001*gaji)
+        console.log(nominal)
+
+        return nominal;
     } else {
         return 0;
     }
 };
 
 
-
-const nominalTerlambat = (Terlambat) => {
+const nominalTerlambat = (Terlambat,gaji) => {
     if (Terlambat > 3) {
-        return potongan;
+        const nominal = Terlambat*(0.0005*gaji);
+        return nominal;
     } else {
         return 0;
     }
 };
+const hitungpotonganAbsensitotal = (jumlahAlpa, jumlahTerlambat) => {
+    const totalPotonganAbsensi = jumlahAlpa + jumlahTerlambat;
+    return totalPotonganAbsensi;
+};
 
-const hasilNominal = (alpa, terlambat, req) => {
-    req.cleanedData.alpa = alpa;
-    req.cleanedData.terlambat = terlambat;
-    return req.cleanedData;
-}
 
 module.exports = {
     nominalAlpa,
     nominalTerlambat,
-    hasilNominal
+    hitungpotonganAbsensitotal
 }
