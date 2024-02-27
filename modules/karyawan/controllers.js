@@ -8,7 +8,7 @@ const { karyawanCreatePotongan, karyawanServiceCreate } = require("./services");
 const KaryawanControllerList =  async (req, res) => {
   try {
     // Your code here
-    const results = Karyawan.find(KaryawanFilter(req)).populate("jabatanRef");
+    const results = Karyawan.find(KaryawanFilter(req))
     return LibPaginationResponse(req, res, results);
   } catch (error) {
     return LibHTTPResponseException(res, error);
