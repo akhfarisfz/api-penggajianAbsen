@@ -25,6 +25,7 @@ const LibPaginationNext = (page, req, url, totalPage) => {
   return LibPaginationQuery(url, { ...req.query, page: page + 1 });
 };
 
+// TODO: remove URL auto generate
 const LibPaginationDots = (c, m, req, url) => {
   let current = c,
     last = m,
@@ -55,7 +56,7 @@ const LibPaginationDots = (c, m, req, url) => {
 
   return rangeWithDots.map((page) => {
     if (page) {
-      return LibPaginationQuery(url, { page });
+      return { page, url: LibPaginationQuery(url, { page }) };
     }
 
     return null;
@@ -71,7 +72,7 @@ const LibPaginationResponse = async (req, res, model) => {
     page = parseInt(req.query.page) || page;
   }
 
-  const pageLimit = 3;
+  const pageLimit = 5;
   const firstPage = page > 1 ? page * pageLimit - pageLimit : 0;
 
   const count = await modelSetClone.countDocuments();
