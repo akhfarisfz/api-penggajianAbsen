@@ -11,10 +11,15 @@ const PenggajianSchema = new mongoose.Schema(
       no_Telepon: { type: String },
       bank: { type: String },
       no_rekening: { type: String },
+      //Jabatan,
       jabatan: {
         nama: { type: String },
         gajiPokok: { type: Number, default: 0 },
         tunjangan: { type: Number, default: 0 },
+      },
+      //Departemen
+      departemen:{
+        nama:{type:String},
       },
       //Potongan
       potongan: [

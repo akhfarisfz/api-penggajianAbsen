@@ -8,6 +8,9 @@ const KaryawanSchema = new mongoose.Schema(
     nama: { type: String },
     alamat: { type: String },
     no_Telepon: { type: String },
+    departemen:{
+      nama:{type:String},
+    },
     bank: { type: String },
     no_rekening: { type: String },
     jabatan: {

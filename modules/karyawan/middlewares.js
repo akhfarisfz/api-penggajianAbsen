@@ -47,6 +47,9 @@ const KaryawanMiddlewareCreate = LibValidationsMiddleware(
   LibValidationFields.CharField({ field: "no_Telepon" }),
   LibValidationFields.CharField({ field: "bank" }),
   LibValidationFields.CharField({ field: "no_rekening" }),
+  // Object Departemen
+  LibValidationFields.ObjectField({ field: "departemen" }),
+  LibValidationFields.CharField({ field: "departemen.nama" }),
   //Object Jabatan
   LibValidationFields.ObjectField({ field: "jabatan" }),
   LibValidationFields.CharField({ field: "jabatan.nama" }),
