@@ -42,14 +42,15 @@ const JabatanMiddlewareCreate = LibValidationsMiddleware(
    *  ...
    */
   LibValidationFields.CharField({ field: "nama" }),
-  LibValidationFields.NumberField({ field: "tunjangan" }),
   LibValidationFields.NumberField({ field: "gajiPokok" }),
+  LibValidationFields.NumberField({ field: "tunjangan" }),
   LibValidationExceptionMiddleware,
 );
 
 const JabatanMiddlewareUpdate = LibValidationsMiddleware(
   LibAuthenticationMiddleware,
   LibValidationFields.CharField({ field: "nama" }),
+  LibValidationFields.NumberField({ field: "gajiPokok" }),
   LibValidationFields.NumberField({ field: "tunjangan" }),
   /** Your middleware here (validations, sanitizing, etc..) */
   LibValidationExceptionMiddleware,
