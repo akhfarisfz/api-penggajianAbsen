@@ -25,6 +25,7 @@ const LibPaginationNext = (page, req, url, totalPage) => {
   return LibPaginationQuery(url, { ...req.query, page: page + 1 });
 };
 
+// TODO: remove URL auto generate
 const LibPaginationDots = (c, m, req, url) => {
   let current = c,
     last = m,
