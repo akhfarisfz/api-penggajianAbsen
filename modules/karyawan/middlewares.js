@@ -1,4 +1,3 @@
-
 const { LibAuthenticationMiddleware } = require("../../libs/authentications");
 const {
   LibValidationExceptionMiddleware,
@@ -7,7 +6,7 @@ const {
 } = require("../../libs/validations");
 
 /**
- * If you want to remove JWT authentication, 
+ * If you want to remove JWT authentication,
  * you can remove 'LibAuthenticationMiddleware' from your middleware list.
  */
 
@@ -24,9 +23,9 @@ const KaryawanMiddlewareCreate = LibValidationsMiddleware(
   /** Your middleware here (validations, sanitizing, etc..) */
 
   /**
-   * "LibValidationExceptionMiddleware" is suitable for validating data sent by the client in body. 
+   * "LibValidationExceptionMiddleware" is suitable for validating data sent by the client in body.
    * If you have your own handler, you can replace it.
-   * 
+   *
    * For example:
    *  ...
    *  LibValidationFields.CharField({ field: "field1" }),
@@ -47,7 +46,6 @@ const KaryawanMiddlewareCreate = LibValidationsMiddleware(
   LibValidationFields.CharField({ field: "no_Telepon" }),
   LibValidationFields.CharField({ field: "bank" }),
   LibValidationFields.CharField({ field: "no_rekening" }),
-  LibValidationFields.NumberField({ field: "gajiPokok" }),
   LibValidationFields.ObjectField({ field: "jabatan" }),
   LibValidationFields.CharField({ field: "jabatan.nama" }),
   LibValidationFields.NumberField({ field: "jabatan.gajiPokok" }),
@@ -59,34 +57,33 @@ const KaryawanMiddlewareCreate = LibValidationsMiddleware(
   LibValidationFields.NumberField({
     field: "absensi.Hadir",
     min: 0,
-    max:30,
-    require: false,
-    customs: [
-      (value, { req }) => {
-        const TotalAbsen = req.body.absensi.Hadir +
-          req.body.absensi.Alpa +
-          req.body.absensi.Terlambat +
-          req.body.absensi.Izin +
-          req.body.absensi.Sakit;
+    max: 30,
+    // require: false,
+    // customs: [
+    //   (value, { req }) => {
+    //     const TotalAbsen =
+    //       req.body.absensi.Hadir +
+    //       req.body.absensi.Alpa +
+    //       req.body.absensi.Terlambat +
+    //       req.body.absensi.Izin +
+    //       req.body.absensi.Sakit;
 
-        if (value < TotalAbsen) {
-          throw new Error("Total Hari kurang dari hari kerja");
-        }
-        else{
-          throw new Error("Total Hari melebihi hari kerja");
-        }
-        return value;
-      }
-    ],
+    //     if (value < TotalAbsen) {
+    //       throw new Error("Total Hari kurang dari hari kerja");
+    //     } else {
+    //       throw new Error("Total Hari melebihi hari kerja");
+    //     }
+    //     // return 0;
+    //   },
+    // ],
   }),
   LibValidationFields.NumberField({ field: "absensi.Alpa", min: 0 }),
   LibValidationFields.NumberField({ field: "absensi.Terlambat", min: 0 }),
   //Array Potongan
   LibValidationFields.ArrayField({ field: "potongan", min: 0 }),
-  LibValidationFields.CharField({ field: "potongan.*.nama",min:0 }),
+  LibValidationFields.CharField({ field: "potongan.*.nama", min: 0 }),
 
-
-  LibValidationExceptionMiddleware,
+  LibValidationExceptionMiddleware
 );
 
 const KaryawanMiddlewareUpdate = LibValidationsMiddleware(
@@ -119,7 +116,7 @@ const KaryawanMiddlewareUpdate = LibValidationsMiddleware(
   // LibValidationFields.CharField({ field: "asuransi.nama" }),
   // LibValidationFields.CharField({ field: "asuransi.kelas" }),
   // LibValidationFields.NumberField({ field: "asuransi.potongan" }),
-  LibValidationExceptionMiddleware,
+  LibValidationExceptionMiddleware
 );
 
 const KaryawanMiddlewareDelete = LibValidationsMiddleware(
