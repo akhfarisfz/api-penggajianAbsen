@@ -15,14 +15,15 @@ const KaryawanSchema = new mongoose.Schema(
       gajiPokok: { type: Number, default: 0 },
       tunjangan: { type: Number, default: 0 },
     },
-  
     //Potongan
-    potongan: {
-      nama: { type: String },
-      potongan: { type: Number, default: 0 },
-      jumlahpotongan:{type:Number,default:0},
-    },
-    absensi:{
+    potongan: [
+      {
+        nama: { type: String },
+        potongan: { type: Number, default: 0, max: 100 },
+        jumlahpotongan: { type: Number, default: 0 },
+      },
+    ],
+    absensi: {
       Hadir: { type: Number, default: 0 },
       Izin: { type: Number, default: 0 },
       Sakit: { type: Number, default: 0 },
@@ -30,7 +31,7 @@ const KaryawanSchema = new mongoose.Schema(
       Terlambat: { type: Number, default: 0 },
       nominalAlpa: { type: Number, default: 0 },
       nominalTerlambat: { type: Number, default: 0 },
-      jumlahpotonganAbsensi:{type:Number,default:0},
+      jumlahpotonganAbsensi: { type: Number, default: 0 },
     },
     created: { type: Date, default: Date.now },
   },
@@ -41,6 +42,6 @@ const Karyawan = mongoose.model("Karyawan", KaryawanSchema);
 
 module.exports = {
   Karyawan,
-  
+
 };
 

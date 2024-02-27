@@ -50,6 +50,7 @@ const JabatanMiddlewareCreate = LibValidationsMiddleware(
 const JabatanMiddlewareUpdate = LibValidationsMiddleware(
   LibAuthenticationMiddleware,
   LibValidationFields.CharField({ field: "nama" }),
+  LibValidationFields.NumberField({ field: "gajiPokok" }),
   LibValidationFields.NumberField({ field: "tunjangan" }),
   /** Your middleware here (validations, sanitizing, etc..) */
   LibValidationExceptionMiddleware,

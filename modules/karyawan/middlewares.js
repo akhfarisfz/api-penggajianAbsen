@@ -47,46 +47,18 @@ const KaryawanMiddlewareCreate = LibValidationsMiddleware(
   LibValidationFields.CharField({ field: "no_Telepon" }),
   LibValidationFields.CharField({ field: "bank" }),
   LibValidationFields.CharField({ field: "no_rekening" }),
-  LibValidationFields.NumberField({ field: "gajiPokok" }),
+  //Object Jabatan
   LibValidationFields.ObjectField({ field: "jabatan" }),
-  LibValidationFields.CharField({ field: "jabatanRef" }),
-
-  // LibValidationFields.CharField({ field: "jabatan._id" }),
   LibValidationFields.CharField({ field: "jabatan.nama" }),
+  LibValidationFields.NumberField({ field: "jabatan.gajiPokok" }),
   LibValidationFields.NumberField({ field: "jabatan.tunjangan" }),
+  //Object Absensi
   LibValidationFields.ObjectField({ field: "absensi" }),
-
-  // Asumsi Hari kerja efektif 30 hari
-  LibValidationFields.NumberField({
-    field: "absensi.Hadir",
-    min: 0,
-    max:30,
-    require: false,
-    customs: [
-      (value, { req }) => {
-        const TotalAbsen = req.body.absensi.Hadir +
-          req.body.absensi.Alpa +
-          req.body.absensi.Terlambat +
-          req.body.absensi.Izin +
-          req.body.absensi.Sakit;
-
-        if (value < TotalAbsen) {
-          throw new Error("Total Hari kurang dari hari kerja");
-        }
-        else{
-          throw new Error("Total Hari melebihi hari kerja");
-        }
-        return value;
-      }
-    ],
-  }),
   LibValidationFields.NumberField({ field: "absensi.Alpa", min: 0 }),
   LibValidationFields.NumberField({ field: "absensi.Terlambat", min: 0 }),
-  LibValidationFields.NumberField({ field: "absensi.nominalAlpa", min: 0 }),
-  LibValidationFields.NumberField({ field: "absensi.nominalTerlambat", min: 0 }),
-  
-  LibValidationFields.CharField({ field: "potongan.nama" }),
-  LibValidationFields.NumberField({ field: "potongan.potongan" }),
+  //Array Potongan
+  LibValidationFields.ArrayField({ field: "potongan", min: 0 }),
+  LibValidationFields.CharField({ field: "potongan.*.nama",min:0 }),
 
 
   LibValidationExceptionMiddleware,
@@ -94,34 +66,34 @@ const KaryawanMiddlewareCreate = LibValidationsMiddleware(
 
 const KaryawanMiddlewareUpdate = LibValidationsMiddleware(
   LibAuthenticationMiddleware,
-  LibValidationFields.CharField({ field: "nik", required: true }),
-  LibValidationFields.CharField({ field: "nama" }),
-  LibValidationFields.CharField({ field: "alamat" }),
-  LibValidationFields.CharField({ field: "no_Telepon" }),
-  LibValidationFields.CharField({ field: "bank" }),
-  LibValidationFields.CharField({ field: "no_rekening" }),
-  LibValidationFields.NumberField({ field: "gajiPokok" }),
-  LibValidationFields.ObjectField({ field: "jabatan" }),
-  LibValidationFields.CharField({ field: "jabatanRef" }),
+  // LibValidationFields.CharField({ field: "nik", required: true }),
+  // LibValidationFields.CharField({ field: "nama" }),
+  // LibValidationFields.CharField({ field: "alamat" }),
+  // LibValidationFields.CharField({ field: "no_Telepon" }),
+  // LibValidationFields.CharField({ field: "bank" }),
+  // LibValidationFields.CharField({ field: "no_rekening" }),
+  // LibValidationFields.NumberField({ field: "gajiPokok" }),
+  // LibValidationFields.ObjectField({ field: "jabatan" }),
+  // // LibValidationFields.CharField({ field: "jabatanRef" }),
 
-  // LibValidationFields.CharField({ field: "jabatan._id" }),
-  LibValidationFields.CharField({ field: "jabatan.nama" }),
-  LibValidationFields.NumberField({ field: "jabatan.tunjangan" }),
-  LibValidationFields.ObjectField({ field: "keluarga" }),
-  LibValidationFields.NumberField({ field: "keluarga.jumlahAnak" }),
-  LibValidationFields.NumberField({ field: "keluarga.tunjangan" }),
-  LibValidationFields.CharField({ field: "statusPernikahan" }),
-  LibValidationFields.ObjectField({ field: "absensi" }),
+  // // LibValidationFields.CharField({ field: "jabatan._id" }),
+  // LibValidationFields.CharField({ field: "jabatan.nama" }),
+  // LibValidationFields.NumberField({ field: "jabatan.tunjangan" }),
+  // LibValidationFields.ObjectField({ field: "keluarga" }),
+  // LibValidationFields.NumberField({ field: "keluarga.jumlahAnak" }),
+  // LibValidationFields.NumberField({ field: "keluarga.tunjangan" }),
+  // LibValidationFields.CharField({ field: "statusPernikahan" }),
+  // LibValidationFields.ObjectField({ field: "absensi" }),
 
-  LibValidationFields.NumberField({ field: "absensi.Alpa", min: 0 }),
-  LibValidationFields.NumberField({ field: "absensi.Terlambat", min: 0 }),
-  LibValidationFields.NumberField({ field: "absensi.nominalAlpa", min: 0 }),
-  LibValidationFields.NumberField({ field: "absensi.nominalTerlambat", min: 0 }),
-  LibValidationFields.CharField({ field: "pajak.nama" }),
-  LibValidationFields.NumberField({ field: "pajak.potongan" }),
-  LibValidationFields.CharField({ field: "asuransi.nama" }),
-  LibValidationFields.CharField({ field: "asuransi.kelas" }),
-  LibValidationFields.NumberField({ field: "asuransi.potongan" }),
+  // LibValidationFields.NumberField({ field: "absensi.Alpa", min: 0 }),
+  // LibValidationFields.NumberField({ field: "absensi.Terlambat", min: 0 }),
+  // LibValidationFields.NumberField({ field: "absensi.nominalAlpa", min: 0 }),
+  // LibValidationFields.NumberField({ field: "absensi.nominalTerlambat", min: 0 }),
+  // LibValidationFields.CharField({ field: "pajak.nama" }),
+  // LibValidationFields.NumberField({ field: "pajak.potongan" }),
+  // LibValidationFields.CharField({ field: "asuransi.nama" }),
+  // LibValidationFields.CharField({ field: "asuransi.kelas" }),
+  // LibValidationFields.NumberField({ field: "asuransi.potongan" }),
   LibValidationExceptionMiddleware,
 );
 

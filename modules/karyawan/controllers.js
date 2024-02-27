@@ -3,11 +3,13 @@ const { LibPaginationResponse } = require("../../libs/paginations");
 const { LibHTTPResponseException } = require("../../libs/https");
 const { Karyawan } = require("./models");
 const { KaryawanFilter } = require("./filters");
+const { karyawanCreatePotongan, karyawanServiceCreate } = require("./services");
 
 const KaryawanControllerList =  async (req, res) => {
   try {
     // Your code here
-    const results = Karyawan.find(KaryawanFilter(req)).populate("jabatanRef");
+    // const results = Karyawan.find(KaryawanFilter(req)).populate("jabatanRef");
+    const results = Karyawan.find(KaryawanFilter(req));
     return LibPaginationResponse(req, res, results);
   } catch (error) {
     return LibHTTPResponseException(res, error);
@@ -17,6 +19,8 @@ const KaryawanControllerList =  async (req, res) => {
 const KaryawanControllerCreate = async (req, res) => {
   try {
     // Your code here
+    req.cleanedData=karyawanServiceCreate(req);
+    req.cleanedData=karyawanCreatePotongan(req);
     await Karyawan.create(req.cleanedData);
     
     res.status(201).json(req.cleanedData);

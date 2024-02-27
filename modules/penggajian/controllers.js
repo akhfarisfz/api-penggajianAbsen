@@ -3,6 +3,7 @@ const { LibPaginationResponse } = require("../../libs/paginations");
 const { LibHTTPResponseException } = require("../../libs/https");
 const { Penggajian } = require("./models");
 const { PenggajianFilter } = require("./filters");
+const { penggajianTotalPotonganCreate, penggajianGajiBersihCreate, PenggajianCreatePotongan, PenggajianCreatepotonganAbsen } = require("./services");
 
 const PenggajianControllerList =  async (req, res) => {
   try {
@@ -16,6 +17,11 @@ const PenggajianControllerList =  async (req, res) => {
 const PenggajianControllerCreate = async (req, res) => {
   try {
     // Your code here
+    req.cleanedData = PenggajianCreatepotonganAbsen(req);
+    req.cleanedData = PenggajianCreatePotongan(req);
+    req.cleanedData = penggajianGajiBersihCreate(req);
+    req.cleanedData = penggajianTotalPotonganCreate(req);
+    console.log(req.cleanedData);
     await Penggajian.create(req.cleanedData);
     res.status(201).json(req.cleanedData);
   } catch (error) {
