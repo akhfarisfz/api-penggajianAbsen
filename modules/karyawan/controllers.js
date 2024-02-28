@@ -17,8 +17,8 @@ const KaryawanControllerList = async (req, res) => {
 const KaryawanControllerCreate = async (req, res) => {
   try {
     // Your code here
-    req.cleanedData = karyawanServiceCreate(req);
-    req.cleanedData = karyawanCreatePotongan(req);
+    // req.cleanedData = karyawanServiceCreate(req);
+    // req.cleanedData = karyawanCreatePotongan(req);
     await Karyawan.create(req.cleanedData);
 
     res.status(201).json(req.cleanedData);
