@@ -54,34 +54,34 @@ const KaryawanMiddlewareCreate = LibValidationsMiddleware(
   // LibValidationFields.ObjectField({ field: "absensi" }),
 
   // Asumsi Hari kerja efektif 30 hari
-  LibValidationFields.NumberField({
-    field: "absensi.Hadir",
-    min: 0,
-    max:30,
-    require: false,
-    customs: [
-      (value, { req }) => {
-        const TotalAbsen = req.body.absensi.Hadir +
-          req.body.absensi.Alpa +
-          req.body.absensi.Terlambat +
-          req.body.absensi.Izin +
-          req.body.absensi.Sakit;
+  // LibValidationFields.NumberField({
+  //   field: "absensi.Hadir",
+  //   min: 0,
+  //   max:30,
+  //   require: false,
+  //   customs: [
+  //     (value, { req }) => {
+  //       const TotalAbsen = req.body.absensi.Hadir +
+  //         req.body.absensi.Alpa +
+  //         req.body.absensi.Terlambat +
+  //         req.body.absensi.Izin +
+  //         req.body.absensi.Sakit;
 
-        if (value < TotalAbsen) {
-          throw new Error("Total Hari kurang dari hari kerja");
-        }
-        else{
-          throw new Error("Total Hari melebihi hari kerja");
-        }
-        return value;
-      }
-    ],
-  }),
-  LibValidationFields.NumberField({ field: "absensi.Alpa", min: 0 }),
-  LibValidationFields.NumberField({ field: "absensi.Terlambat", min: 0 }),
-  //Array Potongan
-  LibValidationFields.ArrayField({ field: "potongan", min: 0 }),
-  LibValidationFields.CharField({ field: "potongan.*.nama", min: 0 }),
+  //       if (value < TotalAbsen) {
+  //         throw new Error("Total Hari kurang dari hari kerja");
+  //       }
+  //       else{
+  //         throw new Error("Total Hari melebihi hari kerja");
+  //       }
+  //       return value;
+  //     }
+  //   ],
+  // }),
+  // LibValidationFields.NumberField({ field: "absensi.Alpa", min: 0 }),
+  // LibValidationFields.NumberField({ field: "absensi.Terlambat", min: 0 }),
+  // //Array Potongan
+  // LibValidationFields.ArrayField({ field: "potongan", min: 0 }),
+  // LibValidationFields.CharField({ field: "potongan.*.nama", min: 0 }),
 
   LibValidationExceptionMiddleware
 );
