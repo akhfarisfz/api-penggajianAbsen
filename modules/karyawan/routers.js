@@ -21,7 +21,7 @@ KaryawanRouter.get("", KaryawanMiddlewareList, KaryawanControllerList);
 KaryawanRouter.post("", KaryawanMiddlewareCreate, KaryawanControllerCreate);
 KaryawanRouter.get("/:id", KaryawanMiddlewareDetail, KaryawanControllerDetail);
 KaryawanRouter.put("/:id", KaryawanMiddlewareUpdate, KaryawanControllerUpdate);
-// KaryawanRouter.delete("/:id", KaryawanMiddlewareDelete, KaryawanControllerDelete);
+KaryawanRouter.delete("/:id", KaryawanMiddlewareDelete, KaryawanControllerDelete);
 
 /**
  * You need to register your application in the index.js file 
