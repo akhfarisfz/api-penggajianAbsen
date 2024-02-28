@@ -1,33 +1,37 @@
-
 const { LibPaginationResponse } = require("../../libs/paginations");
 const { LibHTTPResponseException } = require("../../libs/https");
 const { Penggajian } = require("./models");
 const { PenggajianFilter } = require("./filters");
-const { penggajianTotalPotonganCreate, penggajianGajiBersihCreate, PenggajianCreatePotongan, PenggajianCreatepotonganAbsen } = require("./services");
+const {
+  penggajianTotalPotonganCreate,
+  penggajianGajiBersihCreate,
+  PenggajianCreatePotongan,
+  PenggajianCreatepotonganAbsen,
+} = require("./services");
 
-const PenggajianControllerList =  async (req, res) => {
+const PenggajianControllerList = async (req, res) => {
   try {
     const results = Penggajian.find(PenggajianFilter(req));
     return LibPaginationResponse(req, res, results);
   } catch (error) {
     return LibHTTPResponseException(res, error);
-}
-}
+  }
+};
 
 const PenggajianControllerCreate = async (req, res) => {
   try {
     // Your code here
-    req.cleanedData = PenggajianCreatepotonganAbsen(req);
-    req.cleanedData = PenggajianCreatePotongan(req);
-    req.cleanedData = penggajianGajiBersihCreate(req);
-    req.cleanedData = penggajianTotalPotonganCreate(req);
-    console.log(req.cleanedData);
+    // req.cleanedData = PenggajianCreatepotonganAbsen(req);
+    // req.cleanedData = PenggajianCreatePotongan(req);
+    // req.cleanedData = penggajianGajiBersihCreate(req);
+    // req.cleanedData = penggajianTotalPotonganCreate(req);
+    // console.log(req.cleanedData);
     await Penggajian.create(req.cleanedData);
     res.status(201).json(req.cleanedData);
   } catch (error) {
     return LibHTTPResponseException(res, error);
   }
-}
+};
 
 const PenggajianControllerDetail = async (req, res) => {
   try {
@@ -37,7 +41,7 @@ const PenggajianControllerDetail = async (req, res) => {
   } catch (error) {
     return LibHTTPResponseException(res, error);
   }
-}
+};
 
 const PenggajianControllerUpdate = async (req, res) => {
   try {
@@ -49,7 +53,7 @@ const PenggajianControllerUpdate = async (req, res) => {
   } catch (error) {
     return LibHTTPResponseException(res, error);
   }
-}
+};
 
 const PenggajianControllerDelete = async (req, res) => {
   try {
@@ -61,7 +65,7 @@ const PenggajianControllerDelete = async (req, res) => {
   } catch (error) {
     return LibHTTPResponseException(res, error);
   }
-}
+};
 
 module.exports = {
   PenggajianControllerList,
