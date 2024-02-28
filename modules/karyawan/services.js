@@ -5,6 +5,7 @@ const {
 } = require("./repositories");
 
 const karyawanServiceCreate = (req) => {
+    console.log(req.cleanedData);
     const jumlahAlpa = nominalAlpa(req.cleanedData.absensi.Alpa,req.cleanedData.jabatan.gajiPokok);
     const jumlahTerlambat = nominalTerlambat(req.cleanedData.absensi.Terlambat,req.cleanedData.jabatan.gajiPokok);
     const jumlahpotonganAbsensi = hitungpotonganAbsensitotal(jumlahAlpa, jumlahTerlambat);
@@ -19,10 +20,11 @@ const karyawanCreatePotongan = (req) => {
 
     for (let i = 0; i < pajak.length; i++) {
         const besarpotongan = parseInt(pajak[i].potongan);
-        const jumlahPotongan = gajipkok * (besarpotongan / 100);
-        jumlahPotonganArray.push(jumlahPotongan); 
+        const jumlahpotongan = gajipkok * (besarpotongan / 100);
+        jumlahPotonganArray.push(jumlahpotongan); 
         setpotongan(jumlahPotonganArray, req); 
     };
+    
     return req.cleanedData;
 }
 

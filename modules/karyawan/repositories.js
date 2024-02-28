@@ -3,7 +3,7 @@
 const setpotongan = (jumlahPotonganArray, req) => {
     const pajak = req.cleanedData.potongan;
     for (let i = 0; i < pajak.length; i++) {
-        pajak[i].jumlahPotongan = jumlahPotonganArray[i];
+        pajak[i].jumlahpotongan = jumlahPotonganArray[i];
     }
     return req.cleanedData;
 };
