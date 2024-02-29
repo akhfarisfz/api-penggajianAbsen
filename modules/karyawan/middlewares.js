@@ -46,6 +46,8 @@ const KaryawanMiddlewareCreate = LibValidationsMiddleware(
   LibValidationFields.CharField({ field: "no_Telepon" }),
   LibValidationFields.CharField({ field: "bank" }),
   LibValidationFields.CharField({ field: "no_rekening" }),
+  LibValidationFields.ObjectField({ field: "departemen" }),
+  LibValidationFields.CharField({ field: "departemen.nama" }),
   LibValidationFields.ObjectField({ field: "jabatan" }),
   LibValidationFields.CharField({ field: "jabatan.nama" }),
   LibValidationFields.NumberField({ field: "jabatan.gajiPokok" }),
@@ -97,6 +99,8 @@ const KaryawanMiddlewareUpdate = LibValidationsMiddleware(
   LibValidationFields.CharField({ field: "bank" }),
   LibValidationFields.CharField({ field: "no_rekening" }),
   LibValidationFields.ObjectField({ field: "jabatan" }),
+  // LibValidationFields.ObjectField({ field: "departemen" }),
+  // LibValidationFields.CharField({ field: "departemen.nama" }),
 
   // // LibValidationFields.CharField({ field: "jabatan._id" }),
   // LibValidationFields.CharField({ field: "jabatan.nama" }),
