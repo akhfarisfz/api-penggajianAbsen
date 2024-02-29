@@ -21,10 +21,10 @@ const PenggajianControllerList = async (req, res) => {
 const PenggajianControllerCreate = async (req, res) => {
   try {
     // Your code here
-    // req.cleanedData = PenggajianCreatepotonganAbsen(req);
-    // req.cleanedData = PenggajianCreatePotongan(req);
-    // req.cleanedData = penggajianGajiBersihCreate(req);
-    // req.cleanedData = penggajianTotalPotonganCreate(req);
+    req.cleanedData = PenggajianCreatepotonganAbsen(req);
+    req.cleanedData = PenggajianCreatePotongan(req);
+    req.cleanedData = penggajianGajiBersihCreate(req);
+    req.cleanedData = penggajianTotalPotonganCreate(req);
     // console.log(req.cleanedData);
     await Penggajian.create(req.cleanedData);
     res.status(201).json(req.cleanedData);

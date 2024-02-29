@@ -51,7 +51,7 @@ const KaryawanMiddlewareCreate = LibValidationsMiddleware(
   LibValidationFields.NumberField({ field: "jabatan.gajiPokok" }),
   LibValidationFields.NumberField({ field: "jabatan.tunjangan" }),
   //Object Absensi
-  // LibValidationFields.ObjectField({ field: "absensi" }),
+  LibValidationFields.ObjectField({ field: "absensi" }),
 
   // Asumsi Hari kerja efektif 30 hari
   // LibValidationFields.NumberField({
@@ -77,11 +77,13 @@ const KaryawanMiddlewareCreate = LibValidationsMiddleware(
   //     }
   //   ],
   // }),
-  // LibValidationFields.NumberField({ field: "absensi.Alpa", min: 0 }),
-  // LibValidationFields.NumberField({ field: "absensi.Terlambat", min: 0 }),
+
+  LibValidationFields.NumberField({ field: "absensi.Hadir", min: 0 }),
+  LibValidationFields.NumberField({ field: "absensi.Alpa", min: 0 }),
+  LibValidationFields.NumberField({ field: "absensi.Terlambat", min: 0 }),
   // //Array Potongan
-  // LibValidationFields.ArrayField({ field: "potongan", min: 0 }),
-  // LibValidationFields.CharField({ field: "potongan.*.nama", min: 0 }),
+  LibValidationFields.ArrayField({ field: "potongan", min: 0 }),
+  LibValidationFields.CharField({ field: "potongan.*.nama", min: 0 }),
 
   LibValidationExceptionMiddleware
 );

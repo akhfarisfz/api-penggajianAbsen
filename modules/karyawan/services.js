@@ -17,7 +17,8 @@ const karyawanCreatePotongan = (req) => {
     const gajipkok = req.cleanedData.jabatan.gajiPokok;
     const pajak = req.cleanedData.potongan;
     const jumlahPotonganArray = [];
-
+    
+    console.log(req.cleanedData)
     for (let i = 0; i < pajak.length; i++) {
         const besarpotongan = parseInt(pajak[i].potongan);
         const jumlahpotongan = gajipkok * (besarpotongan / 100);
