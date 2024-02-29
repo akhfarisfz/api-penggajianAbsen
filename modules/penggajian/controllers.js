@@ -11,7 +11,8 @@ const {
 
 const PenggajianControllerList = async (req, res) => {
   try {
-    const results = Penggajian.find(PenggajianFilter(req));
+    const results = Penggajian.find(PenggajianFilter(req)).populate("karyawanref");
+
     return LibPaginationResponse(req, res, results);
   } catch (error) {
     return LibHTTPResponseException(res, error);
@@ -21,11 +22,11 @@ const PenggajianControllerList = async (req, res) => {
 const PenggajianControllerCreate = async (req, res) => {
   try {
     // Your code here
-    req.cleanedData = PenggajianCreatepotonganAbsen(req);
-    req.cleanedData = PenggajianCreatePotongan(req);
-    req.cleanedData = penggajianGajiBersihCreate(req);
-    req.cleanedData = penggajianTotalPotonganCreate(req);
-    // console.log(req.cleanedData);
+    // req.cleanedData = Penggajian.find(PenggajianFilter(req)).populate("karyawanref");
+    // req.cleanedData = PenggajianCreatepotonganAbsen(req);
+    // req.cleanedData = PenggajianCreatePotongan(req);
+    // req.cleanedData = penggajianGajiBersihCreate(req);
+    // req.cleanedData = penggajianTotalPotonganCreate(req);
     await Penggajian.create(req.cleanedData);
     res.status(201).json(req.cleanedData);
   } catch (error) {

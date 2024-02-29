@@ -40,20 +40,16 @@ const PenggajianMiddlewareCreate = LibValidationsMiddleware(
    *  }),
    *  ...
    */
-  LibValidationFields.ObjectField({ field: "karyawan"}),
-  LibValidationFields.CharField({ field: "karyawan.nik", required: true }),
-  LibValidationFields.CharField({ field: "karyawan.nama" }),
-  LibValidationFields.ObjectField({ field: "karyawan.jabatan" }),
-  LibValidationFields.CharField({ field: "karyawan.jabatan.nama" }),
+  LibValidationFields.CharField({ field: "karyawanref",}),
+  // LibValidationFields.ObjectField({ field: "karyawan"}),
+
+  // LibValidationFields.CharField({ field: "karyawan.nik" }),
+  // LibValidationFields.CharField({ field: "karyawan.nama" }),
+  // LibValidationFields.ObjectField({ field: "karyawan.jabatan" }),
+  // LibValidationFields.CharField({ field: "karyawan.jabatan.nama" }),
   // LibValidationFields.ObjectField({ field: "karyawan.departemen" }),
   // LibValidationFields.CharField({ field: "karyawan.departemen.nama" }),
   LibValidationFields.NumberField({ field: "periodeGajiBulan" }),
-  // LibValidationFields.CharField({ field: "karyawan.nik", required: true }),
-  // LibValidationFields.CharField({ field: "karyawan.nama" }),
-  // LibValidationFields.CharField({ field: "karyawan.alamat" }),
-  // LibValidationFields.CharField({ field: "karyawan.no_Telepon" }),
-  // LibValidationFields.CharField({ field: "karyawan.bank" }),
-  // LibValidationFields.CharField({ field: "karyawan.no_rekening" }),
   // //Object Jabatan
   // LibValidationFields.ObjectField({ field: "karyawan.jabatan" }),
   // LibValidationFields.CharField({ field: "karyawan.jabatan.nama" }),

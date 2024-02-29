@@ -14,6 +14,7 @@ const {
 
 //Bawaan Karyawan
 const PenggajianCreatepotonganAbsen = (req) => {
+  console.log(req.cleanedData);
   const jumlahAlpa = nominalAlpa(
     req.cleanedData.karyawan.absensi.Alpa,
     req.cleanedData.karyawan.jabatan.gajiPokok
@@ -35,6 +36,7 @@ const PenggajianCreatepotonganAbsen = (req) => {
 };
 
 const PenggajianCreatePotongan = (req) => {
+  console.log(req.cleanedData.karyawanref);
   const gajipkok = req.cleanedData.karyawan.jabatan.gajiPokok;
   const pajak = req.cleanedData.karyawan.potongan;
   const jumlahPotonganArray = [];

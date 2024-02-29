@@ -37,6 +37,16 @@ const KaryawanControllerDetail = async (req, res) => {
     return LibHTTPResponseException(res, error);
   }
 };
+const KaryawanControllerPrint = async (req, res) => {
+  try {
+    // Your code here
+    let karyawan = await Karyawan.findOne({ _id: req.params.id });
+    if (!karyawan) throw { status: 404, message: "Not found" };
+    res.status(200).json(karyawan);
+  } catch (error) {
+    return LibHTTPResponseException(res, error);
+  }
+};
 
 const KaryawanControllerUpdate = async (req, res) => {
   try {
@@ -68,5 +78,6 @@ module.exports = {
   KaryawanControllerCreate,
   KaryawanControllerDetail,
   KaryawanControllerUpdate,
+  KaryawanControllerPrint,
   KaryawanControllerDelete,
 };
