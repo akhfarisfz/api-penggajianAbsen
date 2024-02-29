@@ -4,6 +4,7 @@ const {
   PenggajianControllerList,
   PenggajianControllerCreate,
   PenggajianControllerDetail,
+  PenggajianControllerPrint,
   PenggajianControllerUpdate,
   PenggajianControllerDelete
 } = require("./controllers");
@@ -20,6 +21,7 @@ const PenggajianRouter = LibHTTPRouter();
 PenggajianRouter.get("", PenggajianMiddlewareList, PenggajianControllerList);
 PenggajianRouter.post("", PenggajianMiddlewareCreate, PenggajianControllerCreate);
 PenggajianRouter.get("/:id", PenggajianMiddlewareDetail, PenggajianControllerDetail);
+PenggajianRouter.put("/:id/print/", PenggajianMiddlewareDetail, PenggajianControllerPrint);
 // PenggajianRouter.put("/:id", PenggajianMiddlewareUpdate, PenggajianControllerUpdate);
 PenggajianRouter.delete("/:id", PenggajianMiddlewareDelete, PenggajianControllerDelete);
 

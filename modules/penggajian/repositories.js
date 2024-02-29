@@ -7,11 +7,11 @@ const setpotonganAbsensi = (potonganAlpa,potonganTerlambat,totalPotonganAbsensi,
     return req.cleanedData;
 };
 const setpotonganpenggajian = (jumlahPotonganArray, req) => {
-    const pajak = req.cleanedData.karyawan.potongan;
+    const pajak = req.potongan;
     for (let i = 0; i < pajak.length; i++) {
         pajak[i].jumlahPotongan = jumlahPotonganArray[i];
     }
-    return req.cleanedData;
+    return req;
 };
 
 
@@ -19,12 +19,14 @@ const setpotonganpenggajian = (jumlahPotonganArray, req) => {
 
 //HitungPotongan Pajak
 const totalPajak = (req) =>{
-    const pajak = req.cleanedData.karyawan.potongan;
+    
+    const pajak = req.potongan; 
     let Totalpotonganpajak = 0;
     for (let i = 0; i < pajak.length; i++) {
-        Totalpotonganpajak+=parseInt(pajak[i].jumlahPotongan); 
+        Totalpotonganpajak+=parseInt(pajak[i].jumlahpotongan); 
 
     };
+
     return Totalpotonganpajak;
 
 }

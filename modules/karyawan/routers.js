@@ -22,7 +22,7 @@ KaryawanRouter.get("", KaryawanMiddlewareList, KaryawanControllerList);
 KaryawanRouter.post("", KaryawanMiddlewareCreate, KaryawanControllerCreate);
 KaryawanRouter.get("/:id", KaryawanMiddlewareDetail, KaryawanControllerDetail);
 KaryawanRouter.put("/:id", KaryawanMiddlewareUpdate, KaryawanControllerUpdate);
-KaryawanRouter.put("/:id/print/", KaryawanMiddlewareDetail, KaryawanControllerPrint);
+KaryawanRouter.get("/:id/print/", KaryawanMiddlewareDetail, KaryawanControllerPrint);
 KaryawanRouter.delete("/:id", KaryawanMiddlewareDelete, KaryawanControllerDelete);
 
 /**

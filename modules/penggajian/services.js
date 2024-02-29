@@ -14,7 +14,6 @@ const {
 
 //Bawaan Karyawan
 const PenggajianCreatepotonganAbsen = (req) => {
-  console.log(req.cleanedData);
   const jumlahAlpa = nominalAlpa(
     req.cleanedData.karyawan.absensi.Alpa,
     req.cleanedData.karyawan.jabatan.gajiPokok
@@ -36,44 +35,51 @@ const PenggajianCreatepotonganAbsen = (req) => {
 };
 
 const PenggajianCreatePotongan = (req) => {
-  console.log(req.cleanedData.karyawanref);
-  const gajipkok = req.cleanedData.karyawan.jabatan.gajiPokok;
-  const pajak = req.cleanedData.karyawan.potongan;
+  const gajipkok = req.karyawanref.jabatan.gajiPokok;
+
+  const pajak = req.karyawanref.potongan;
+
   const jumlahPotonganArray = [];
   for (let i = 0; i < pajak.length; i++) {
     const besarpotongan = parseInt(pajak[i].potongan);
     const jumlahPotongan = gajipkok * (besarpotongan / 100);
     jumlahPotonganArray.push(jumlahPotongan);
+
     setpotonganpenggajian(jumlahPotonganArray, req);
   }
-  return req.cleanedData;
+  return req;
 };
 
 //Total Potongan (Absen + Pajak)=>{
 const penggajianTotalPotonganCreate = (req) => {
   const potonganpajak = totalPajak(req);
+
   const totalpotongan = HitungPotonganAbsenPajak(
-    req.cleanedData.karyawan.absensi.jumlahpotonganAbsensi,
+    req.absensi.jumlahpotonganAbsensi,
     potonganpajak
   );
-  req.cleanedData.jumlahpotongan = totalpotongan;
-  return req.cleanedData;
+  req.totalPotongan = totalpotongan;
+
+  return req;
 };
 
 //Total Gaji Bersih (Gaji+tunjangan-potongan)
 const penggajianGajiBersihCreate = (req) => {
   const totalGaji = HitungGajiTotal(
-    req.cleanedData.karyawan.jabatan.gajiPokok,
-    req.cleanedData.karyawan.jabatan.tunjangan
+    req.jabatan.gajiPokok,
+    req.jabatan.tunjangan
   );
+
   const TotalPajak = totalPajak(req);
+
   const TotalPotongan = HitungPotonganAbsenPajak(
-    req.cleanedData.karyawan.absensi.jumlahpotonganAbsensi,
+    req.absensi.jumlahpotonganAbsensi,
     TotalPajak
   );
+
   const gajibersih = TotalGajiBersih(totalGaji, TotalPotongan);
-  req.cleanedData.totalGaji = gajibersih;
-  return req.cleanedData;
+  req.totalGaji = gajibersih;
+  return req;
 };
 
 module.exports = {

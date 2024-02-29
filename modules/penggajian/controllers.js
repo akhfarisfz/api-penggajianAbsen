@@ -8,6 +8,7 @@ const {
   PenggajianCreatePotongan,
   PenggajianCreatepotonganAbsen,
 } = require("./services");
+const { Karyawan } = require("../karyawan/models");
 
 const PenggajianControllerList = async (req, res) => {
   try {
@@ -22,12 +23,17 @@ const PenggajianControllerList = async (req, res) => {
 const PenggajianControllerCreate = async (req, res) => {
   try {
     // Your code here
-    // req.cleanedData = Penggajian.find(PenggajianFilter(req)).populate("karyawanref");
+    // karyawan = Penggajian.find().populate("karyawanref");
+    
     // req.cleanedData = PenggajianCreatepotonganAbsen(req);
-    // req.cleanedData = PenggajianCreatePotongan(req);
-    // req.cleanedData = penggajianGajiBersihCreate(req);
-    // req.cleanedData = penggajianTotalPotonganCreate(req);
+    console.log(req.cleanedData);
+
+    // let karyawan = await Karyawan.findOne({ _id: req.cleanedData.karyawanref});
+    // req.cleanedData = penggajianTotalPotonganCreate(karyawan);
+    // req.cleanedData=penggajianGajiBersihCreate(karyawan);
     await Penggajian.create(req.cleanedData);
+    
+
     res.status(201).json(req.cleanedData);
   } catch (error) {
     return LibHTTPResponseException(res, error);
@@ -55,7 +61,16 @@ const PenggajianControllerUpdate = async (req, res) => {
     return LibHTTPResponseException(res, error);
   }
 };
-
+const PenggajianControllerPrint = async (req, res) => {
+  try {
+    // Your code here
+    let penggajian = await Penggajian.findOne({ _id: req.params.id });
+    if (!penggajian) throw { status: 404, message: "Not found" };
+    res.status(200).json(penggajian);
+  } catch (error) {
+    return LibHTTPResponseException(res, error);
+  }
+};
 const PenggajianControllerDelete = async (req, res) => {
   try {
     // Your code here
@@ -74,4 +89,5 @@ module.exports = {
   PenggajianControllerDetail,
   PenggajianControllerUpdate,
   PenggajianControllerDelete,
+  PenggajianControllerPrint
 };
