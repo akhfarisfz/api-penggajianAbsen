@@ -1,4 +1,3 @@
-
 const mongoose = require("mongoose");
 
 const KaryawanSchema = new mongoose.Schema(
@@ -8,8 +7,8 @@ const KaryawanSchema = new mongoose.Schema(
     nama: { type: String },
     alamat: { type: String },
     no_Telepon: { type: String },
-    departemen:{
-      nama:{type:String},
+    departemen: {
+      nama: { type: String },
     },
     bank: { type: String },
     no_rekening: { type: String },
@@ -26,18 +25,18 @@ const KaryawanSchema = new mongoose.Schema(
         jumlahpotongan: { type: Number, default: 0 },
       },
     ],
-    // absensi: {
-    //   Hadir: { type: Number, default: 0 },
-    //   Izin: { type: Number, default: 0 },
-    //   Sakit: { type: Number, default: 0 },
-    //   Alpa: { type: Number, default: 0 },
-    //   Terlambat: { type: Number, default: 0 },
-    //   nominalAlpa: { type: Number, default: 0 },
-    //   nominalTerlambat: { type: Number, default: 0 },
-    //   jumlahpotonganAbsensi: { type: Number, default: 0 },
-    // },
+    absensi: {
+      Hadir: { type: Number, default: 0 },
+      Izin: { type: Number, default: 0 },
+      Sakit: { type: Number, default: 0 },
+      Alpa: { type: Number, default: 0 },
+      Terlambat: { type: Number, default: 0 },
+      nominalAlpa: { type: Number, default: 0 },
+      nominalTerlambat: { type: Number, default: 0 },
+      jumlahpotonganAbsensi: { type: Number, default: 0 },
+    },
     created: { type: Date, default: Date.now },
-  },
+  }
   // { versionKey: true }
 );
 
@@ -45,6 +44,4 @@ const Karyawan = mongoose.model("Karyawan", KaryawanSchema);
 
 module.exports = {
   Karyawan,
-
 };
-

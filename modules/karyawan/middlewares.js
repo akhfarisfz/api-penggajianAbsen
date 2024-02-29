@@ -97,7 +97,6 @@ const KaryawanMiddlewareUpdate = LibValidationsMiddleware(
   LibValidationFields.CharField({ field: "bank" }),
   LibValidationFields.CharField({ field: "no_rekening" }),
   LibValidationFields.ObjectField({ field: "jabatan" }),
-  LibValidationFields.NumberField({ field: "jabatan.gajiPokok" }),
 
   // // LibValidationFields.CharField({ field: "jabatan._id" }),
   // LibValidationFields.CharField({ field: "jabatan.nama" }),

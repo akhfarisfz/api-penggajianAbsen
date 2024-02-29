@@ -1,19 +1,18 @@
-
 const { LibPaginationResponse } = require("../../libs/paginations");
 const { LibHTTPResponseException } = require("../../libs/https");
 const { Karyawan } = require("./models");
 const { KaryawanFilter } = require("./filters");
 const { karyawanCreatePotongan, karyawanServiceCreate } = require("./services");
 
-const KaryawanControllerList =  async (req, res) => {
+const KaryawanControllerList = async (req, res) => {
   try {
     // Your code here
-    const results = Karyawan.find(KaryawanFilter(req))
+    const results = Karyawan.find(KaryawanFilter(req));
     return LibPaginationResponse(req, res, results);
   } catch (error) {
     return LibHTTPResponseException(res, error);
   }
-}
+};
 
 const KaryawanControllerCreate = async (req, res) => {
   try {
@@ -21,12 +20,12 @@ const KaryawanControllerCreate = async (req, res) => {
     req.cleanedData=karyawanServiceCreate(req);
     req.cleanedData=karyawanCreatePotongan(req);
     await Karyawan.create(req.cleanedData);
-    
+
     res.status(201).json(req.cleanedData);
   } catch (error) {
     return LibHTTPResponseException(res, error);
   }
-}
+};
 
 const KaryawanControllerDetail = async (req, res) => {
   try {
@@ -37,7 +36,7 @@ const KaryawanControllerDetail = async (req, res) => {
   } catch (error) {
     return LibHTTPResponseException(res, error);
   }
-}
+};
 
 const KaryawanControllerUpdate = async (req, res) => {
   try {
@@ -50,7 +49,7 @@ const KaryawanControllerUpdate = async (req, res) => {
   } catch (error) {
     return LibHTTPResponseException(res, error);
   }
-}
+};
 
 const KaryawanControllerDelete = async (req, res) => {
   try {
@@ -62,7 +61,7 @@ const KaryawanControllerDelete = async (req, res) => {
   } catch (error) {
     return LibHTTPResponseException(res, error);
   }
-}
+};
 
 module.exports = {
   KaryawanControllerList,
