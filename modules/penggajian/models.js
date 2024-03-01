@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const PenggajianSchema = new mongoose.Schema(
   {
     /** Your schema here */
-    karyawanref:{type:mongoose.Schema.ObjectId,ref:'Karyawan'},
+    karyawanref: { type: mongoose.Schema.ObjectId, ref: "Karyawan" },
     // karyawan: {
     //   nik: { type: String, unique: true, required: true },
     //   nama: { type: String },
