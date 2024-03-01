@@ -53,6 +53,7 @@ const KaryawanMiddlewareCreate = LibValidationsMiddleware(
   //Object Absensi
   LibValidationFields.ObjectField({ field: "absensi" }),
 
+
   // Asumsi Hari kerja efektif 30 hari
   // LibValidationFields.NumberField({
   //   field: "absensi.Hadir",
@@ -81,6 +82,9 @@ const KaryawanMiddlewareCreate = LibValidationsMiddleware(
   LibValidationFields.NumberField({ field: "absensi.Hadir", min: 0 }),
   LibValidationFields.NumberField({ field: "absensi.Alpa", min: 0 }),
   LibValidationFields.NumberField({ field: "absensi.Terlambat", min: 0 }),
+  // Departemen
+  LibValidationFields.ObjectField({ field: "departemen" }),
+
   // //Array Potongan
   LibValidationFields.ArrayField({ field: "potongan", min: 0 }),
   LibValidationFields.CharField({ field: "potongan.*.nama", min: 0 }),

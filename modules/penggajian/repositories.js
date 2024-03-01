@@ -19,12 +19,10 @@ const setpotonganpenggajian = (jumlahPotonganArray, req) => {
 
 //HitungPotongan Pajak
 const totalPajak = (req) =>{
-    
     const pajak = req.potongan; 
     let Totalpotonganpajak = 0;
     for (let i = 0; i < pajak.length; i++) {
         Totalpotonganpajak+=parseInt(pajak[i].jumlahpotongan); 
-
     };
 
     return Totalpotonganpajak;

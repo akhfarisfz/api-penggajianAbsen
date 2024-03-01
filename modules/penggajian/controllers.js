@@ -26,11 +26,12 @@ const PenggajianControllerCreate = async (req, res) => {
     // karyawan = Penggajian.find().populate("karyawanref");
     
     // req.cleanedData = PenggajianCreatepotonganAbsen(req);
-    console.log(req.cleanedData);
+    // console.log(req.cleanedData);
 
-    // let karyawan = await Karyawan.findOne({ _id: req.cleanedData.karyawanref});
-    // req.cleanedData = penggajianTotalPotonganCreate(karyawan);
-    // req.cleanedData=penggajianGajiBersihCreate(karyawan);
+    let karyawan = await Karyawan.findOne({ _id: req.cleanedData.karyawanref});
+    req.cleanedData = penggajianTotalPotonganCreate(req,karyawan);
+    req.cleanedData=penggajianGajiBersihCreate(req,karyawan);
+
     await Penggajian.create(req.cleanedData);
     
 

@@ -51,35 +51,34 @@ const PenggajianCreatePotongan = (req) => {
 };
 
 //Total Potongan (Absen + Pajak)=>{
-const penggajianTotalPotonganCreate = (req) => {
-  const potonganpajak = totalPajak(req);
-
+const penggajianTotalPotonganCreate = (req,karyawan) => {
+  const potonganpajak = totalPajak(karyawan);
   const totalpotongan = HitungPotonganAbsenPajak(
-    req.absensi.jumlahpotonganAbsensi,
+    karyawan.absensi.jumlahpotonganAbsensi,
     potonganpajak
   );
-  req.totalPotongan = totalpotongan;
+  req.cleanedData.totalPotongan = totalpotongan;
 
-  return req;
+  return req.cleanedData;
 };
 
 //Total Gaji Bersih (Gaji+tunjangan-potongan)
-const penggajianGajiBersihCreate = (req) => {
+const penggajianGajiBersihCreate = (req,karyawan) => {
   const totalGaji = HitungGajiTotal(
-    req.jabatan.gajiPokok,
-    req.jabatan.tunjangan
+    karyawan.jabatan.gajiPokok,
+    karyawan.jabatan.tunjangan
   );
 
-  const TotalPajak = totalPajak(req);
+  const TotalPajak = totalPajak(karyawan);
 
   const TotalPotongan = HitungPotonganAbsenPajak(
-    req.absensi.jumlahpotonganAbsensi,
+    karyawan.absensi.jumlahpotonganAbsensi,
     TotalPajak
   );
 
   const gajibersih = TotalGajiBersih(totalGaji, TotalPotongan);
-  req.totalGaji = gajibersih;
-  return req;
+  req.cleanedData.totalGaji = gajibersih;
+  return req.cleanedData;
 };
 
 module.exports = {

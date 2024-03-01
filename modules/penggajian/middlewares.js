@@ -41,14 +41,7 @@ const PenggajianMiddlewareCreate = LibValidationsMiddleware(
    *  ...
    */
   LibValidationFields.CharField({ field: "karyawanref",}),
-  // LibValidationFields.ObjectField({ field: "karyawan"}),
-
-  // LibValidationFields.CharField({ field: "karyawan.nik" }),
-  // LibValidationFields.CharField({ field: "karyawan.nama" }),
-  // LibValidationFields.ObjectField({ field: "karyawan.jabatan" }),
-  // LibValidationFields.CharField({ field: "karyawan.jabatan.nama" }),
-  // LibValidationFields.ObjectField({ field: "karyawan.departemen" }),
-  // LibValidationFields.CharField({ field: "karyawan.departemen.nama" }),
+  
   LibValidationFields.NumberField({ field: "periodeGajiBulan" }),
   // //Object Jabatan
   // LibValidationFields.ObjectField({ field: "karyawan.jabatan" }),
