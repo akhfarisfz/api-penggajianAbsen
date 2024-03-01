@@ -17,8 +17,8 @@ const KaryawanControllerList = async (req, res) => {
 const KaryawanControllerCreate = async (req, res) => {
   try {
     // Your code here
-    req.cleanedData=karyawanServiceCreate(req);
-    req.cleanedData=karyawanCreatePotongan(req);
+    req.cleanedData = karyawanServiceCreate(req);
+    req.cleanedData = karyawanCreatePotongan(req);
     await Karyawan.create(req.cleanedData);
 
     res.status(201).json(req.cleanedData);
@@ -37,6 +37,7 @@ const KaryawanControllerDetail = async (req, res) => {
     return LibHTTPResponseException(res, error);
   }
 };
+
 const KaryawanControllerPrint = async (req, res) => {
   try {
     // Your code here
@@ -51,8 +52,8 @@ const KaryawanControllerPrint = async (req, res) => {
 const KaryawanControllerUpdate = async (req, res) => {
   try {
     // Your code here
-    // let karyawan = await Karyawan.findOne({ _id: req.params.id });
-    // if (!karyawan) throw { status: 404, message: "Not found" };
+    let karyawan = await Karyawan.findOne({ _id: req.params.id });
+    if (!karyawan) throw { status: 404, message: "Not found" };
 
     await Karyawan.findByIdAndUpdate(req.params.id, req.cleanedData);
     res.status(200).json(req.cleanedData);

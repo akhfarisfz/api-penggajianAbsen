@@ -46,15 +46,12 @@ const KaryawanMiddlewareCreate = LibValidationsMiddleware(
   LibValidationFields.CharField({ field: "no_Telepon" }),
   LibValidationFields.CharField({ field: "bank" }),
   LibValidationFields.CharField({ field: "no_rekening" }),
-  LibValidationFields.ObjectField({ field: "departemen" }),
-  LibValidationFields.CharField({ field: "departemen.nama" }),
   LibValidationFields.ObjectField({ field: "jabatan" }),
   LibValidationFields.CharField({ field: "jabatan.nama" }),
   LibValidationFields.NumberField({ field: "jabatan.gajiPokok" }),
   LibValidationFields.NumberField({ field: "jabatan.tunjangan" }),
   //Object Absensi
   LibValidationFields.ObjectField({ field: "absensi" }),
-
 
   // Asumsi Hari kerja efektif 30 hari
   // LibValidationFields.NumberField({
@@ -86,6 +83,7 @@ const KaryawanMiddlewareCreate = LibValidationsMiddleware(
   LibValidationFields.NumberField({ field: "absensi.Terlambat", min: 0 }),
   // Departemen
   LibValidationFields.ObjectField({ field: "departemen" }),
+  LibValidationFields.CharField({ field: "departemen.nama" }),
 
   // //Array Potongan
   LibValidationFields.ArrayField({ field: "potongan", min: 0 }),
@@ -101,8 +99,10 @@ const KaryawanMiddlewareUpdate = LibValidationsMiddleware(
   LibValidationFields.CharField({ field: "alamat" }),
   LibValidationFields.CharField({ field: "no_Telepon" }),
   LibValidationFields.CharField({ field: "bank" }),
+  LibValidationFields.ObjectField({ field: "departemen" }),
+  LibValidationFields.CharField({ field: "departemen.nama" }),
   LibValidationFields.CharField({ field: "no_rekening" }),
-  LibValidationFields.ObjectField({ field: "jabatan" }),
+  // LibValidationFields.ObjectField({ field: "jabatan" }),
   // LibValidationFields.ObjectField({ field: "departemen" }),
   // LibValidationFields.CharField({ field: "departemen.nama" }),
 

@@ -12,7 +12,9 @@ const { Karyawan } = require("../karyawan/models");
 
 const PenggajianControllerList = async (req, res) => {
   try {
-    const results = Penggajian.find(PenggajianFilter(req)).populate("karyawanref");
+    const results = Penggajian.find(PenggajianFilter(req)).populate(
+      "karyawanref"
+    );
 
     return LibPaginationResponse(req, res, results);
   } catch (error) {
@@ -24,16 +26,15 @@ const PenggajianControllerCreate = async (req, res) => {
   try {
     // Your code here
     // karyawan = Penggajian.find().populate("karyawanref");
-    
+
     // req.cleanedData = PenggajianCreatepotonganAbsen(req);
     // console.log(req.cleanedData);
 
-    let karyawan = await Karyawan.findOne({ _id: req.cleanedData.karyawanref});
-    req.cleanedData = penggajianTotalPotonganCreate(req,karyawan);
-    req.cleanedData=penggajianGajiBersihCreate(req,karyawan);
+    let karyawan = await Karyawan.findOne({ _id: req.cleanedData.karyawanref });
+    req.cleanedData = penggajianTotalPotonganCreate(req, karyawan);
+    req.cleanedData = penggajianGajiBersihCreate(req, karyawan);
 
     await Penggajian.create(req.cleanedData);
-    
 
     res.status(201).json(req.cleanedData);
   } catch (error) {
@@ -62,6 +63,7 @@ const PenggajianControllerUpdate = async (req, res) => {
     return LibHTTPResponseException(res, error);
   }
 };
+
 const PenggajianControllerPrint = async (req, res) => {
   try {
     // Your code here
@@ -72,6 +74,7 @@ const PenggajianControllerPrint = async (req, res) => {
     return LibHTTPResponseException(res, error);
   }
 };
+
 const PenggajianControllerDelete = async (req, res) => {
   try {
     // Your code here
@@ -90,5 +93,5 @@ module.exports = {
   PenggajianControllerDetail,
   PenggajianControllerUpdate,
   PenggajianControllerDelete,
-  PenggajianControllerPrint
+  PenggajianControllerPrint,
 };
