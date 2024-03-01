@@ -1,4 +1,3 @@
-
 function JabatanFilter(req) {
   let qSearch = {};
   const { search, limit, page, ...filters } = req.query;
@@ -10,7 +9,7 @@ function JabatanFilter(req) {
          * You can change field1 and field2 according to your needs.
          **/
 
-        // { nama: { $regex: ".*" + search + ".*", $options: "i" } },
+        { nama: { $regex: ".*" + search + ".*", $options: "i" } },
       ],
     };
   }
@@ -21,4 +20,3 @@ function JabatanFilter(req) {
 module.exports = {
   JabatanFilter,
 };
-  

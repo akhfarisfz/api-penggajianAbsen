@@ -1,4 +1,3 @@
-
 function PotonganFilter(req) {
   let qSearch = {};
   const { search, limit, page, ...filters } = req.query;
@@ -11,7 +10,6 @@ function PotonganFilter(req) {
          **/
 
         { nama: { $regex: ".*" + search + ".*", $options: "i" } },
-        { potongan: { $regex: ".*" + search + ".*", $options: "i" } },
       ],
     };
   }
@@ -22,4 +20,3 @@ function PotonganFilter(req) {
 module.exports = {
   PotonganFilter,
 };
-  
