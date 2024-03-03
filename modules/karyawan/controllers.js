@@ -19,6 +19,7 @@ const KaryawanControllerCreate = async (req, res) => {
     // Your code here
     req.cleanedData = karyawanServiceCreate(req);
     req.cleanedData = karyawanCreatePotongan(req);
+    // console.log(req.cleanedData)
     await Karyawan.create(req.cleanedData);
 
     res.status(201).json(req.cleanedData);

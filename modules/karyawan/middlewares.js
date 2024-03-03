@@ -79,8 +79,6 @@ const KaryawanMiddlewareCreate = LibValidationsMiddleware(
   // }),
 
   LibValidationFields.NumberField({ field: "absensi.Hadir", min: 0 }), 
-LibValidationFields.NumberField({ field: "absensi.Alpa", min: 0 }),
-LibValidationFields.NumberField({ field: "absensi.Terlambat", min: 0}),
 
   // Departemen
   LibValidationFields.ObjectField({ field: "departemen" }),
