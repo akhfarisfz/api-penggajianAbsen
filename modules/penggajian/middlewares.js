@@ -4,6 +4,7 @@ const {
   LibValidationFields,
   LibValidationsMiddleware,
 } = require("../../libs/validations");
+const { Penggajian } = require("./models");
 /**
  * If you want to remove JWT authentication,
  * you can remove 'LibAuthenticationMiddleware' from your middleware list.
@@ -45,7 +46,6 @@ const PenggajianMiddlewareCreate = LibValidationsMiddleware(
       async (value, { req }) => {
         const { periodeGajiBulan } = req.body;
         
-        // Periksa apakah sudah ada penggajian dengan karyawanref yang sama untuk bulan yang sama
         const existingPenggajian = await Penggajian.findOne({
           karyawanref: value,
           periodeGajiBulan

@@ -22,12 +22,6 @@ const PenggajianControllerList = async (req, res) => {
 
 const PenggajianControllerCreate = async (req, res) => {
   try {
-    // Your code here
-    // karyawan = Penggajian.find().populate("karyawanref");
-
-    // req.cleanedData = PenggajianCreatepotonganAbsen(req);
-    // console.log(req.cleanedData);
-
     let karyawan = await Karyawan.findOne({ _id: req.cleanedData.karyawanref });
     req.cleanedData = penggajianTotalPotonganCreate(req, karyawan);
     req.cleanedData = penggajianGajiBersihCreate(req, karyawan);
