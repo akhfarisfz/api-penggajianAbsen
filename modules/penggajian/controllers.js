@@ -5,8 +5,6 @@ const { PenggajianFilter } = require("./filters");
 const {
   penggajianTotalPotonganCreate,
   penggajianGajiBersihCreate,
-  PenggajianCreatePotongan,
-  PenggajianCreatepotonganAbsen,
 } = require("./services");
 const { Karyawan } = require("../karyawan/models");
 
@@ -33,7 +31,7 @@ const PenggajianControllerCreate = async (req, res) => {
     let karyawan = await Karyawan.findOne({ _id: req.cleanedData.karyawanref });
     req.cleanedData = penggajianTotalPotonganCreate(req, karyawan);
     req.cleanedData = penggajianGajiBersihCreate(req, karyawan);
-
+    
     await Penggajian.create(req.cleanedData);
 
     res.status(201).json(req.cleanedData);

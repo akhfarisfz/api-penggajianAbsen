@@ -1,4 +1,5 @@
 
+const { min } = require("lodash");
 const { LibAuthenticationMiddleware } = require("../../libs/authentications");
 const {
   LibValidationExceptionMiddleware,
@@ -44,7 +45,8 @@ const AbsensiMiddlewareCreate = LibValidationsMiddleware(
   LibValidationFields.NumberField({ field: "Hadir" }),
   LibValidationFields.NumberField({ field: "Izin" }),
   LibValidationFields.NumberField({ field: "Sakit" }),
-  LibValidationFields.NumberField({ field: "Alpa" }),
+  LibValidationFields.NumberField({ field: "Alpa",
+min:0 }),
   LibValidationFields.NumberField({ field: "Terlambat" }),
   LibValidationFields.NumberField({ field: "nominalAlpa" }),
   LibValidationFields.NumberField({ field: "nominalTerlambat" }),

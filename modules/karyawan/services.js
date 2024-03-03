@@ -5,7 +5,7 @@ const {
 } = require("./repositories");
 
 const karyawanServiceCreate = (req) => {
-    console.log(req.cleanedData);
+    console.log(req.cleanedData.absensi.Alpa);
     const jumlahAlpa = nominalAlpa(req.cleanedData.absensi.Alpa,req.cleanedData.jabatan.gajiPokok);
     const jumlahTerlambat = nominalTerlambat(req.cleanedData.absensi.Terlambat,req.cleanedData.jabatan.gajiPokok);
     const jumlahpotonganAbsensi = hitungpotonganAbsensitotal(jumlahAlpa, jumlahTerlambat);

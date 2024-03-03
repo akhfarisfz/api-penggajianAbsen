@@ -4,7 +4,6 @@ const {
   LibValidationFields,
   LibValidationsMiddleware,
 } = require("../../libs/validations");
-
 /**
  * If you want to remove JWT authentication,
  * you can remove 'LibAuthenticationMiddleware' from your middleware list.
@@ -40,28 +39,35 @@ const PenggajianMiddlewareCreate = LibValidationsMiddleware(
    *  }),
    *  ...
    */
-  LibValidationFields.CharField({ field: "karyawanref" }),
+  LibValidationFields.CharField({ field: "karyawanref",
+    field: "karyawanref",
+    customs: [
+      async (value, { req }) => {
+        const { periodeGajiBulan } = req.body;
+        
+        // Periksa apakah sudah ada penggajian dengan karyawanref yang sama untuk bulan yang sama
+        const existingPenggajian = await Penggajian.findOne({
+          karyawanref: value,
+          periodeGajiBulan
+        });
+  
+        if (existingPenggajian) {
+          throw new Error("Karyawan telah memiliki slip gaji untuk bulan ini");
+        }
+        
+        return value;
+      }
+    ]
+  }),
 
-  LibValidationFields.NumberField({ field: "periodeGajiBulan" }),
-  // //Object Jabatan
-  // LibValidationFields.ObjectField({ field: "karyawan.jabatan" }),
-  // LibValidationFields.CharField({ field: "karyawan.jabatan.nama" }),
-  // LibValidationFields.NumberField({ field: "karyawan.jabatan.gajiPokok" }),
-  // LibValidationFields.NumberField({ field: "karyawan.jabatan.tunjangan" }),
-  // // Object Departemen
-  // LibValidationFields.ObjectField({ field: "karyawan.departemen" }),
-  // LibValidationFields.CharField({ field: "karyawan.departemen.nama" }),
-  // //Object Absensi
-  // LibValidationFields.ObjectField({ field: "karyawan.absensi" }),
-  // LibValidationFields.NumberField({ field: "karyawan.absensi.Alpa", min: 0 }),
-  // LibValidationFields.NumberField({
-  //   field: "karyawan.absensi.Terlambat",
-  //   min: 0,
-  // }),
-  // //Array Potongan
-  // LibValidationFields.ArrayField({ field: "karyawan.potongan", min: 0 }),
-  // LibValidationFields.CharField({ field: "karyawan.potongan.*.nama", min: 0 }),
-  // LibValidationFields.NumberField({ field: "periodeGajiBulan" }),
+  LibValidationFields.NumberField({ 
+    field: "periodeGajiBulan",
+    min: 1,
+    max: 12,
+  }),
+  
+  
+  
   LibValidationExceptionMiddleware
 );
 
