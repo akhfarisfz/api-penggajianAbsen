@@ -4,7 +4,7 @@ const PenggajianSchema = new mongoose.Schema(
   {
     /** Your schema here */
     karyawanref: { type: mongoose.Schema.ObjectId, ref: "Karyawan" },
-    periodeGajiBulan: { type: Number, default: 0 },
+    periodeGajiBulan: { type: Number, default: 1 },
     totalPotongan: { type: Number, default: 0 },
     totalGaji: { type: Number, default: 0 },
 

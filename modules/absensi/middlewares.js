@@ -41,7 +41,9 @@ const AbsensiMiddlewareCreate = LibValidationsMiddleware(
    *    sanitizers: [AbsensiSanitizerField4ToHash],
    *  }),
    *  ...
-   */
+  */
+  // LibValidationFields.DateField({ field: "TapIn" }),
+  // LibValidationFields.DateField({ field: "TapOut" }),
   LibValidationFields.NumberField({ field: "Hadir" }),
   LibValidationFields.NumberField({ field: "Izin" }),
   LibValidationFields.NumberField({ field: "Sakit" }),

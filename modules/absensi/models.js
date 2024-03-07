@@ -3,6 +3,10 @@ const mongoose = require("mongoose");
 
 const AbsensiSchema = new mongoose.Schema(
   {
+    idkaryawan:{type:Number,default:0},
+    tapIn:{type:Date},
+    tapOut:{type:Date},
+    status:{type:String},
     Hadir: { type: Number, default: 0 },
     Izin: { type: Number, default: 0 },
     Sakit: { type: Number, default: 0 },
